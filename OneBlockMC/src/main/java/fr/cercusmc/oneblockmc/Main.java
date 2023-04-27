@@ -4,14 +4,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 	
-	private Main instance;
+	private static Main instance;
 	
 	@Override
 	public void onEnable() {
-		instance = this;
+		setinstance(this);
 	}
 	
-	public Main getInstance() {
+	private static void setinstance(Main main) {
+		instance = main;
+		
+	}
+
+	public static Main getInstance() {
 		return instance;
 	}
 
