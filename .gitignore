@@ -1,0 +1,7 @@
+.metadata/*
+.sonarlint/*
+/OneBlockMC/.classpath
+/OneBlockMC/.project
+/OneBlockMC/.gitignore
+/OneBlockMC/.settings/*
+/OneBlockMC/target/*
