@@ -1,0 +1,6 @@
+island:
+   creating_island: "§eVotre île est en cours de création..."
+   successfull_create_island: "§eVotre île a bien été crée en §6x=%x%, y=%y%, z=%z%"
+   successfull_change_biome: "§eLe biome de votre île a bien été changé en §6%biomeName%"
+   successfull_calc_level: "§eVotre level d'île : §6%level%"
+   successfull_delete_island: "§eVotre île a bien été supprimé"

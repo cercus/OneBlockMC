@@ -18,7 +18,7 @@ public class FileCustom {
 	private File file;
     private FileConfiguration fileConfiguration;
     private String fileName;
-    private Logger logger;
+    private Logger logger = new Logger();
 
     /**
      * Contruct a new object FileCustom

@@ -8,7 +8,11 @@ public enum PlaceHolderType {
 	PLAYER("%player%"),
 	FILE_NAME("%fileName%"),
 	MATERIAL_NAME("%materialName%"),
-	BIOME_NAME("%biomeName%");
+	BIOME_NAME("%biomeName%"),
+	LOC_X("%x%"),
+	LOC_Y("%y%"),
+	LOC_Z("%z%"),
+	LEVEL("%level%");
 	
 	
 	private String placeHolderName;

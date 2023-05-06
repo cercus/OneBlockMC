@@ -1,6 +1,7 @@
 config:
-   overworld: "world"
+   overworld: "Oneblock_overworld"
    positionY: 73
-   biomeDefault: "PLAINS"
+   biome_default: "PLAINS"
    radiusMin: 25
    radiusMax: 500
+   space_between_island: 20

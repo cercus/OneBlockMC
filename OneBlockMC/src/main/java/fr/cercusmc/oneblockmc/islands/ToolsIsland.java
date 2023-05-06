@@ -2,6 +2,7 @@ package fr.cercusmc.oneblockmc.islands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -10,22 +11,36 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.World.Environment;
+import org.bukkit.WorldCreator;
 import org.bukkit.block.Biome;
 import org.bukkit.configuration.ConfigurationSection;
 
 import fr.cercusmc.oneblockmc.Main;
 import fr.cercusmc.oneblockmc.utils.FileCustom;
+import fr.cercusmc.oneblockmc.utils.MessageUtil;
+import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
 import fr.cercusmc.oneblockmc.utils.Position;
 
 public class ToolsIsland {
 	
+	private static final String ISLANDS = "islands";
+
 	private ToolsIsland() {}
 	
+	/**
+	 * Create one island
+	 * @param uuid - UUID of player
+	 * @return The island created
+	 */
 	public static Island createIsland(UUID uuid) {
 		
-		int nbIsland = Main.getIslandsFile().getInt("nbIslands");
+		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get("messages").getString("island.creating_island"));
+		FileCustom c = Main.getFiles().get(ISLANDS);
+		int nbIsland = c.getInt("nbIslands");
 		Position islandPosition = Position.findNext(nbIsland);
-		Location locIsland = islandPosition.toLocation(Main.getIslandConfig().getOverworld());
+		Location locIsland = islandPosition.toLocation(Main.getOverworld());
 		Island newIsland = new Island();
 		newIsland.setBans(new ArrayList<>());
 		newIsland.setMembers(Arrays.asList(uuid.toString()));
@@ -48,20 +63,42 @@ public class ToolsIsland {
 		locIsland.clone().add(0, -1, 0).getBlock().setType(Material.BEDROCK);
 		
 		updateIslandInFile(newIsland);
+		c.set("nbIslands", nbIsland+1);
+		c.save();
+		changeBiomeOfIsland(uuid, Main.getIslandConfig().getBiomeDefault());
 		Bukkit.getPlayer(uuid).teleport(Position.getCenterOfBlock(locIsland));
+		
+		EnumMap<PlaceHolderType, String> map = new EnumMap<>(PlaceHolderType.class);
+		map.put(PlaceHolderType.LOC_X, locIsland.getX()+"");
+		map.put(PlaceHolderType.LOC_Y, locIsland.getY()+"");
+		map.put(PlaceHolderType.LOC_Z, locIsland.getZ()+"");
+		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get("messages").getString("island.successfull_create_island"), map);
+		
+		
 		return newIsland;
 	}
 	
+	/**
+	 * Delete the island of player
+	 * @param uuid - UUID of player
+	 * @return
+	 */
 	public static Island deleteIsland(UUID uuid) {
-		return null;
+		Island is = getIslandOfPlayer(uuid);
+		DeleteIsland.deleteIsland(is);
+		MessageUtil.sendMessage(uuid, Main.getFiles().get("messages").getString("successfull_delete_island"));
+		return is;
 	}
 	
 	public static Biome changeBiomeOfIsland(UUID uuid, Biome newBiome) {
+		
+		ChangeBiome.changeBiome(getIslandOfPlayer(uuid), Bukkit.getPlayer(uuid), newBiome);
+		
 		return newBiome;
 	}
 	
 	public static Island updateIslandInFile(Island island) {
-		FileCustom c = Main.getIslandsFile();
+		FileCustom c = Main.getFiles().get(ISLANDS);
 		ConfigurationSection section = null;
 		String beginPath = "islands.";
 		if(c.contains(beginPath+island.getOwner().toString())) {
@@ -94,8 +131,10 @@ public class ToolsIsland {
 	
 	public static Map<UUID, Island> getAllIslands() {
 		Map<UUID, Island> islands = new HashMap<>();
-		FileCustom c = Main.getIslandsFile();
-		for(String i : c.getConfigurationSection("islands").getKeys(false)) {
+		FileCustom c = Main.getFiles().get(ISLANDS);
+		if(c.getConfigurationSection(ISLANDS) == null)
+			return islands;
+		for(String i : c.getConfigurationSection(ISLANDS).getKeys(false)) {
 			Island island = new Island();
 			island.setOwner(UUID.fromString(i));
 			String ownerPath = "islands."+i;
@@ -136,6 +175,17 @@ public class ToolsIsland {
 		Optional<Island> island = getAllIslands().values().stream().filter(k -> k.getOwner().equals(uuid) || k.getMembers().contains(uuid.toString())).findFirst();
 		
 		return island.isPresent() ? island.get() : null;
+	}
+	
+	public static World createWorld(String name) {
+		WorldCreator wc = new WorldCreator(name);
+		wc.environment(Environment.NORMAL);
+		wc.generateStructures(false);
+		wc.generator(new OneblockGenerator());
+		if (Bukkit.getWorld(name) == null) {
+			Bukkit.getServer().createWorld(wc);
+		}
+		return Bukkit.getWorld(name);
 	}
 
 }

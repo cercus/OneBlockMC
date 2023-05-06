@@ -1,25 +1,25 @@
 package fr.cercusmc.oneblockmc.islands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.block.Biome;
 
 import fr.cercusmc.oneblockmc.Main;
 
 public class IslandConfig {
 	
-	private World overworld;
+	private String overworld;
 	private Biome biomeDefault;
 	private int positionY;
 	private int radiusMin;
 	private int radiusMax;
+	private int spaceBetweenIsland;
 	
 	public IslandConfig() {
-		this.overworld = Bukkit.getWorld(Main.getInstance().getConfig().getString("config.overworld"));
-		this.biomeDefault = Biome.valueOf(Main.getInstance().getConfig().getString("config.biomeDefault"));
+		this.overworld = Main.getInstance().getConfig().getString("config.overworld");
+		this.biomeDefault = Biome.valueOf(Main.getInstance().getConfig().getString("config.biome_default"));
 		this.positionY = Main.getInstance().getConfig().getInt("config.positionY");
 		this.radiusMin = Main.getInstance().getConfig().getInt("config.radiusMin");
 		this.radiusMax = Main.getInstance().getConfig().getInt("config.radiusMax");
+		this.spaceBetweenIsland = Main.getInstance().getConfig().getInt("config.space_between_island");
 		
 		
 	}
@@ -32,7 +32,7 @@ public class IslandConfig {
 		return positionY;
 	}
 	
-	public World getOverworld() {
+	public String getOverworld() {
 		return overworld;
 	}
 	
@@ -42,6 +42,10 @@ public class IslandConfig {
 	
 	public int getRadiusMin() {
 		return radiusMin;
+	}
+	
+	public int getSpaceBetweenIsland() {
+		return spaceBetweenIsland;
 	}
 
 }

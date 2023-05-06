@@ -1,10 +1,13 @@
 package fr.cercusmc.oneblockmc;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.cercusmc.oneblockmc.commands.OneBlockCommand;
 import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.IslandConfig;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
@@ -14,29 +17,38 @@ public class Main extends JavaPlugin {
 	
 	private static Main instance;
 	
-	private static FileCustom islandsFile;
+	private static Map<String, FileCustom> files = new HashMap<>();
 	
 	private static Map<UUID, Island> islands;
 	
 	private static IslandConfig islandConfig;
 	
+	
+	private static World overworld;
+	
 	private static void setStaticVariable() {
 		islands = ToolsIsland.getAllIslands();
 		islandConfig = new IslandConfig();
+		overworld = ToolsIsland.createWorld(islandConfig.getOverworld());
 	}
 	
 	@Override
 	public void onEnable() {
 		setInstance(this);
 		
+		saveDefaultConfig();
+		loadFiles();
 		setStaticVariable();
 		
-		loadFiles();
+		getCommand("ob").setExecutor(new OneBlockCommand());
+		getCommand("ob").setTabCompleter(new OneBlockCommand());
 		
 	}
 	
 	private static void loadFiles() {
-		islandsFile = new FileCustom(instance, "islands.yml");
+		files.put("islands", new FileCustom(instance, "islands.yml"));
+		files.put("messages", new FileCustom(instance, "messages.yml"));
+		files.put("levels", new FileCustom(instance, "levels.yml"));
 		
 	}
 
@@ -49,9 +61,6 @@ public class Main extends JavaPlugin {
 		return instance;
 	}
 	
-	public static FileCustom getIslandsFile() {
-		return islandsFile;
-	}
 	
 	public static Map<UUID, Island> getIslands() {
 		return islands;
@@ -59,6 +68,14 @@ public class Main extends JavaPlugin {
 	
 	public static IslandConfig getIslandConfig() {
 		return islandConfig;
+	}
+	
+	public static World getOverworld() {
+		return overworld;
+	}
+
+	public static Map<String, FileCustom> getFiles() {
+		return files;
 	}
 
 }
