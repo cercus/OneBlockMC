@@ -16,6 +16,10 @@ public class IslandStats {
 	}
 
 
+	public IslandStats() {
+	}
+
+
 	public int getNbBlock() {
 		return nbBlock;
 	}

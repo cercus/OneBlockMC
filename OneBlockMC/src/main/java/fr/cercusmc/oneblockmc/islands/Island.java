@@ -3,7 +3,6 @@ package fr.cercusmc.oneblockmc.islands;
 import java.util.List;
 import java.util.UUID;
 
-import org.bukkit.Location;
 import org.bukkit.block.Biome;
 
 public class Island {
@@ -28,6 +27,20 @@ public class Island {
 		this.islandStats = islandStats;
 		this.locations = locations;
 		this.biome = biome;
+	}
+	
+	public Island addBan(String uuid) {
+		this.bans.add(uuid);
+		return this;
+	}
+	
+	public boolean playerIsBanned(String uuid) {
+		return this.bans.contains(uuid);
+	}
+	
+	public Island removeBan(String uuid) {
+		this.bans.remove(uuid);
+		return this;
 	}
 
 

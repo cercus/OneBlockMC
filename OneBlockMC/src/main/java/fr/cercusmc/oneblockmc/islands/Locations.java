@@ -16,6 +16,9 @@ public class Locations {
 		this.spawnIsland = spawnIsland;
 	}
 
+	public Locations() {
+	}
+
 	public Location getCenterIsland() {
 		return centerIsland;
 	}
