@@ -1,0 +1,6 @@
+config:
+   overworld: "world"
+   positionY: 73
+   biomeDefault: "PLAINS"
+   radiusMin: 25
+   radiusMax: 500

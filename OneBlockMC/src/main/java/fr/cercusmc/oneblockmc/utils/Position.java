@@ -60,5 +60,13 @@ public record Position(int x, int y, int z) {
 	public Location toLocation(World world) {
 		return new Location(world, x(), y(), z());
 	}
+	
+	public static Location getCenterOfBlock(Location loc) {
+		return loc.clone().add(0.5, 1, 0.5);
+	}
+	
+	public static Location getCenterOfBlock(Position position, World world) {
+		return getCenterOfBlock(position.toLocation(world));
+	}
 
 }
