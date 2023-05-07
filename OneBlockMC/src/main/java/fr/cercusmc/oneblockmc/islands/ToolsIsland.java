@@ -25,6 +25,7 @@ import fr.cercusmc.oneblockmc.utils.Position;
 
 public class ToolsIsland {
 	
+	private static final String MESSAGES = "messages";
 	private static final String ISLANDS = "islands";
 
 	private ToolsIsland() {}
@@ -36,7 +37,7 @@ public class ToolsIsland {
 	 */
 	public static Island createIsland(UUID uuid) {
 		
-		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get("messages").getString("island.creating_island"));
+		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get(MESSAGES).getString("island.creating_island"));
 		FileCustom c = Main.getFiles().get(ISLANDS);
 		int nbIsland = c.getInt("nbIslands");
 		Position islandPosition = Position.findNext(nbIsland);
@@ -72,7 +73,7 @@ public class ToolsIsland {
 		map.put(PlaceHolderType.LOC_X, locIsland.getX()+"");
 		map.put(PlaceHolderType.LOC_Y, locIsland.getY()+"");
 		map.put(PlaceHolderType.LOC_Z, locIsland.getZ()+"");
-		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get("messages").getString("island.successfull_create_island"), map);
+		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get(MESSAGES).getString("island.successfull_create_island"), map);
 		
 		
 		return newIsland;
@@ -85,15 +86,28 @@ public class ToolsIsland {
 	 */
 	public static Island deleteIsland(UUID uuid) {
 		Island is = getIslandOfPlayer(uuid);
+		if(is == null) return null;
 		DeleteIsland.deleteIsland(is);
-		MessageUtil.sendMessage(uuid, Main.getFiles().get("messages").getString("successfull_delete_island"));
+		Main.getFiles().get(ISLANDS).set(ISLANDS+"."+uuid.toString(), null);
+		MessageUtil.sendMessage(uuid, Main.getFiles().get(MESSAGES).getString("successfull_delete_island"));
+		updateIslandVariable(is);
 		return is;
+	}
+	
+	public static void calcLevel(UUID uuid) {
+		Island is = getIslandOfPlayer(uuid);
+		if(is == null) return;
+		
+		CalcIsland.calcIsland(is, Bukkit.getPlayer(uuid));
 	}
 	
 	public static Biome changeBiomeOfIsland(UUID uuid, Biome newBiome) {
 		
-		ChangeBiome.changeBiome(getIslandOfPlayer(uuid), Bukkit.getPlayer(uuid), newBiome);
-		
+		Island is = getIslandOfPlayer(uuid);
+		if(is == null) return null;
+		ChangeBiome.changeBiome(is, Bukkit.getPlayer(uuid), newBiome);
+		is.setBiome(newBiome);
+		updateIslandVariable(is);
 		return newBiome;
 	}
 	
@@ -122,11 +136,15 @@ public class ToolsIsland {
 		section.set("islandStats.phase", stats.getPhase());
 		section.set("islandStats.radiusIsland", stats.getRadiusIsland());
 		c.save();
+		updateIslandVariable(island);
+		return island;
+	}
+
+	public static void updateIslandVariable(Island island) {
 		if(Main.getIslands().containsKey(island.getOwner()))
 			Main.getIslands().replace(island.getOwner(), island);
 		else
 			Main.getIslands().put(island.getOwner(), island);
-		return island;
 	}
 	
 	public static Map<UUID, Island> getAllIslands() {
@@ -177,11 +195,11 @@ public class ToolsIsland {
 		return island.isPresent() ? island.get() : null;
 	}
 	
-	public static World createWorld(String name) {
+	public static World createWorld(Environment environnement, String name) {
 		WorldCreator wc = new WorldCreator(name);
-		wc.environment(Environment.NORMAL);
+		wc.environment(environnement);
 		wc.generateStructures(false);
-		wc.generator(new OneblockGenerator());
+		wc.generator(Main.getInstance().getDefaultWorldGenerator(name, null));
 		if (Bukkit.getWorld(name) == null) {
 			Bukkit.getServer().createWorld(wc);
 		}

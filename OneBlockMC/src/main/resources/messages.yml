@@ -4,3 +4,12 @@ island:
    successfull_change_biome: "§eLe biome de votre île a bien été changé en §6%biomeName%"
    successfull_calc_level: "§eVotre level d'île : §6%level%"
    successfull_delete_island: "§eVotre île a bien été supprimé"
+   not_island: "§cVous ne possédez pas d'île"
+   not_owner: "§cVous n'êtes pas le propriétaire de l'île"
+commands:
+   delete:
+      syntax: "§e/ob delete"
+      description: "§eSupprimer son île (irreversible)"
+   level:
+      syntax: "§e/ob level"
+      description: "§eVoir son niveau d'île"

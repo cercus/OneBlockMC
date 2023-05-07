@@ -5,9 +5,12 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.World;
+import org.bukkit.World.Environment;
+import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.cercusmc.oneblockmc.commands.OneBlockCommand;
+import fr.cercusmc.oneblockmc.generators.VoidGenerator;
 import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.IslandConfig;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
@@ -23,13 +26,21 @@ public class Main extends JavaPlugin {
 	
 	private static IslandConfig islandConfig;
 	
+	private ChunkGenerator chunkGenerator;
+	
 	
 	private static World overworld;
 	
 	private static void setStaticVariable() {
 		islands = ToolsIsland.getAllIslands();
 		islandConfig = new IslandConfig();
-		overworld = ToolsIsland.createWorld(islandConfig.getOverworld());
+		overworld = ToolsIsland.createWorld(Environment.NORMAL, islandConfig.getOverworld());
+	}
+	
+	@Override
+	public void onLoad() {
+		super.onLoad();
+		this.chunkGenerator = new VoidGenerator();
 	}
 	
 	@Override
@@ -78,4 +89,9 @@ public class Main extends JavaPlugin {
 		return files;
 	}
 
+	
+	@Override
+    public ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
+        return this.chunkGenerator;
+    }
 }

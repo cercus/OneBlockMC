@@ -12,6 +12,8 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
+import fr.cercusmc.oneblockmc.commands.players.DeleteCommand;
+import fr.cercusmc.oneblockmc.commands.players.LevelCommand;
 import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
 import fr.cercusmc.oneblockmc.utils.Position;
@@ -26,12 +28,13 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		this.subCommands = new ArrayList<>();
 		this.subCommandsAdmin = new ArrayList<>();
 		
+		addAll(new DeleteCommand(), new LevelCommand());
+		
 		
 
 		
 	}
 
-	@SuppressWarnings("unused")
 	private void addAll(SubCommand... subCommands) {
 		this.subCommands.addAll(Arrays.asList(subCommands));
 	}
@@ -47,13 +50,13 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		if (sender instanceof Player p) {
 			
 			if (args.length > 0 && args[0].equalsIgnoreCase("admin")) {
-				Optional<SubCommand> sub = subCommandsAdmin.stream().filter(k-> k.getName().equals(args[0])).findFirst();
+				Optional<SubCommand> sub = subCommandsAdmin.stream().filter(k -> checkArg(args[1], k)).findFirst();
 				
 				if(sub.isPresent() && sub.get().playerHasPermission(p, sub.get().getPermission()) || p.isOp()) 
 					sub.ifPresent(k -> k.perform(p, args));
 					
 			} else if(args.length > 0) {
-				Optional<SubCommand> sub = subCommands.stream().filter(k-> k.getName().equals(args[0])).findFirst();
+				Optional<SubCommand> sub = subCommands.stream().filter(k -> checkArg(args[0], k)).findFirst();
 				if(sub.isPresent() && sub.get().playerHasPermission(p, sub.get().getPermission())) 
 					sub.ifPresent(k -> k.perform(p, args));
 
@@ -64,6 +67,10 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		}
 
 		return true;
+	}
+
+	private boolean checkArg(String arg, SubCommand k) {
+		return k.getName().equals(arg)|| k.getAliases().contains(arg);
 	}
 
 	private void teleportPlayerIsland(Player p) {

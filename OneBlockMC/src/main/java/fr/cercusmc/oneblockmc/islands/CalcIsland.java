@@ -48,6 +48,7 @@ public class CalcIsland {
 					isStats.setLevel(level);
 					is.setIslandStats(isStats);
 					ToolsIsland.updateIslandInFile(is);
+					ToolsIsland.updateIslandVariable(is);
 					EnumMap<PlaceHolderType, String> map = new EnumMap<>(PlaceHolderType.class);
 					map.put(PlaceHolderType.LEVEL, level+"");
 					MessageUtil.sendMessage(p, Main.getFiles().get("messages").getString("island.successfull_calc_level"), map);
