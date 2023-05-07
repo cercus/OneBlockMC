@@ -60,6 +60,7 @@ public class Main extends JavaPlugin {
 		files.put("islands", new FileCustom(instance, "islands.yml"));
 		files.put("messages", new FileCustom(instance, "messages.yml"));
 		files.put("levels", new FileCustom(instance, "levels.yml"));
+		files.put("deletePlayerWaiting", new FileCustom(instance, "deletePlayerWaiting.yml"));
 		
 	}
 

@@ -6,6 +6,7 @@ island:
    successfull_delete_island: "§eVotre île a bien été supprimé"
    not_island: "§cVous ne possédez pas d'île"
    not_owner: "§cVous n'êtes pas le propriétaire de l'île"
+   message_member_deleted_island: "§eVotre île a été supprimé par son propriétaire"
 commands:
    delete:
       syntax: "§e/ob delete"

@@ -3,7 +3,11 @@ package fr.cercusmc.oneblockmc.commands.players;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -47,7 +51,17 @@ public class DeleteCommand implements SubCommand {
 			
 		} else {
 			if(is.playerIsOwner(p.getUniqueId())) {
-				ToolsIsland.deleteIsland(p.getUniqueId());
+				ToolsIsland.deleteIsland(is, p.getUniqueId());
+				for(String member : is.getMembers()) {
+					if(Bukkit.getPlayer(UUID.fromString(member)).isOnline()) {
+						Bukkit.getPlayer(UUID.fromString(member)).teleport(Main.getIslandConfig().getSpawn());
+						MessageUtil.sendMessage(Bukkit.getPlayer(UUID.fromString(member)), Main.getFiles().get(MESSAGES).getString("island.message_member_deleted_island"));
+					} else {
+						Set<String> players = Main.getFiles().get("deletePlayerWaiting").getStringList("players").stream().collect(Collectors.toSet());
+						players.add(member);
+						Main.getFiles().get("deletePlayerWaiting").set("players", players);
+					}
+				}
 			} else {
 				MessageUtil.sendMessage(p, Main.getFiles().get(MESSAGES).getString("island.not_owner"));
 			}

@@ -84,13 +84,13 @@ public class ToolsIsland {
 	 * @param uuid - UUID of player
 	 * @return
 	 */
-	public static Island deleteIsland(UUID uuid) {
-		Island is = getIslandOfPlayer(uuid);
+	public static Island deleteIsland(Island is, UUID uuid) {
 		if(is == null) return null;
 		DeleteIsland.deleteIsland(is);
 		Main.getFiles().get(ISLANDS).set(ISLANDS+"."+uuid.toString(), null);
-		MessageUtil.sendMessage(uuid, Main.getFiles().get(MESSAGES).getString("successfull_delete_island"));
+		MessageUtil.sendMessage(uuid, Main.getFiles().get(MESSAGES).getString("island.successfull_delete_island"));
 		updateIslandVariable(is);
+		Bukkit.getPlayer(uuid).teleport(Main.getIslandConfig().getSpawn());
 		return is;
 	}
 	
