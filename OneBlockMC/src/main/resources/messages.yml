@@ -1,3 +1,21 @@
+menus:
+   last_page: "§eVous êtes sur la dernière page"
+   first_page: "§eVous êtes sur la première page"
+   current_page: "§eVous êtes à la page §6%page%§e/§6%maxPage%"
+   icon_previous_page:
+      name: "§ePage précédente"
+      icon: "DARK_OAK_BUTTON"
+      lore: []
+   icon_next_page:
+      name: "§ePage suivante"
+      icon: "DARK_OAK_BUTTON"
+      lore: []
+   close_menu:
+      name: "§cFermer le menu"
+      icon: "BARRIER"
+      lore: []
+    
+
 island:
    creating_island: "§eVotre île est en cours de création..."
    successfull_create_island: "§eVotre île a bien été crée en §6x=%x%, y=%y%, z=%z%"
@@ -40,4 +58,7 @@ commands:
    infos:
       syntax: "§e/ob infos"
       description: "§eVoir les infos de son île"
+   biomes:
+      syntax: "§e/ob biomes"
+      description: "§eOuvrir le menu des biomes"
         

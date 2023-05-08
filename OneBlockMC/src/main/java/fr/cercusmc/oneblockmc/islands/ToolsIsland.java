@@ -107,6 +107,7 @@ public class ToolsIsland {
 		ChangeBiome.changeBiome(is, Bukkit.getPlayer(uuid), newBiome);
 		is.setBiome(newBiome);
 		updateIslandVariable(is);
+		updateIslandInFile(is);
 		return newBiome;
 	}
 	

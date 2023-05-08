@@ -16,7 +16,9 @@ public enum PlaceHolderType {
 	SYNTAX("%syntax%"),
 	ISLAND_NAME("%islandName%"),
 	ISLAND_OWNER("%islandOwner%"),
-	ISLAND_RADIUS("%radius%");
+	ISLAND_RADIUS("%radius%"),
+	PAGE("%page%"),
+	MAX_PAGE("%maxPage%");
 	
 	
 	private String placeHolderName;

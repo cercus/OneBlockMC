@@ -6,5 +6,6 @@ public class Constantes {
 	
 	public static final String MESSAGES = "messages";
 	public static final String ISLANDS = "islands";
+	public static final String BIOMES = "biomes";
 
 }

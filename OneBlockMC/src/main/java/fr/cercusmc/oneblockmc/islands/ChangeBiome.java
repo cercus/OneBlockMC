@@ -11,6 +11,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import fr.cercusmc.oneblockmc.Main;
+import fr.cercusmc.oneblockmc.utils.Constantes;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
 import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
 
@@ -26,7 +27,7 @@ public class ChangeBiome {
 			completableFuture.join();
 			EnumMap<PlaceHolderType, String> map = new EnumMap<>(PlaceHolderType.class);
 			map.put(PlaceHolderType.BIOME_NAME, biome.name());
-			MessageUtil.sendMessage(p, Main.getFiles().get("messages").getString("island.successfull_change_biome"), map);
+			MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.successfull_change_biome"), map);
 		});
 	}
 

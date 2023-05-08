@@ -10,3 +10,8 @@ config:
       x: 0
       y: 68
       z: 0
+   menus:
+      filler:
+         icon: "GRAY_STAINED_GLASS_PANE"
+         name: ""
+         lore: ""

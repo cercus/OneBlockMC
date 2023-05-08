@@ -15,6 +15,7 @@ import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.IslandConfig;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
 import fr.cercusmc.oneblockmc.utils.FileCustom;
+import fr.cercusmc.oneblockmc.utils.menus.MenuManager;
 
 public class Main extends JavaPlugin {
 	
@@ -54,6 +55,8 @@ public class Main extends JavaPlugin {
 		getCommand("ob").setExecutor(new OneBlockCommand());
 		getCommand("ob").setTabCompleter(new OneBlockCommand());
 		
+		MenuManager.setup(getServer(), this);
+		
 	}
 	
 	private static void loadFiles() {
@@ -61,6 +64,7 @@ public class Main extends JavaPlugin {
 		files.put("messages", new FileCustom(instance, "messages.yml"));
 		files.put("levels", new FileCustom(instance, "levels.yml"));
 		files.put("deletePlayerWaiting", new FileCustom(instance, "deletePlayerWaiting.yml"));
+		files.put("biomes", new FileCustom(instance, "biomes.yml"));
 		
 	}
 

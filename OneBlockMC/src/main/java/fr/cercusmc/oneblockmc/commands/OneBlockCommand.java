@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 import fr.cercusmc.oneblockmc.Main;
+import fr.cercusmc.oneblockmc.commands.players.BiomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.DelHomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.DeleteCommand;
 import fr.cercusmc.oneblockmc.commands.players.HomeCommand;
@@ -36,7 +37,7 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		this.subCommands = new ArrayList<>();
 		this.subCommandsAdmin = new ArrayList<>();
 
-		addAll(new DeleteCommand(), new LevelCommand(), new HomeCommand(), new SetHomeCommand(), new DelHomeCommand());
+		addAll(new DeleteCommand(), new LevelCommand(), new HomeCommand(), new SetHomeCommand(), new DelHomeCommand(), new BiomeCommand());
 
 	}
 
