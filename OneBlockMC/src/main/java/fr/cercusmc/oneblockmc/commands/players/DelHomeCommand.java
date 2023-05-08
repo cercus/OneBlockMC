@@ -8,54 +8,60 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import fr.cercusmc.oneblockmc.Main;
-import fr.cercusmc.oneblockmc.commands.OneBlockCommand;
 import fr.cercusmc.oneblockmc.islands.Island;
+import fr.cercusmc.oneblockmc.islands.Locations;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
 import fr.cercusmc.oneblockmc.utils.Constantes;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
 import fr.cercusmc.oneblockmc.utils.SubCommand;
 
-public class LevelCommand implements SubCommand {
-	
+public class DelHomeCommand implements SubCommand {
 
 	@Override
 	public String getName() {
-		return "level";
+		return "delhome";
 	}
 
 	@Override
 	public List<String> getAliases() {
-		return new ArrayList<>(Arrays.asList("lvl"));
+		return new ArrayList<>(Arrays.asList("dh"));
 	}
 
 	@Override
 	public String getDescription() {
-		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.level.description");
+		return null;
 	}
 
 	@Override
 	public String getSyntax() {
-		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.level.syntax");
+		return null;
 	}
 
 	@Override
 	public void perform(CommandSender sender, String[] args) {
-		
 		Player p = (Player) sender;
-		if(OneBlockCommand.messageTooManyArgs(args, p, this)) return;
-		
 		Island is = ToolsIsland.getIslandOfPlayer(p.getUniqueId());
-		if(is == null) {
+		if (is == null) {
 			MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.not_island"));
-		} else {			
-			ToolsIsland.calcLevel(p.getUniqueId());
+			return;
 		}
+		if (!is.getOwner().equals(p.getUniqueId())) {
+			MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.not_owner"));
+			return;
+		}
+		
+		Locations locs = is.getLocations();
+		locs.setHomeIsland(null);
+		is.setLocations(locs);
+		ToolsIsland.updateIslandInFile(is);
+		ToolsIsland.updateIslandVariable(is);
+		MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.successfull_delete_home"));
 		
 	}
 
 	@Override
 	public String getPermission() {
-		return "oneblock.player.level";
+		return "oneblock.player.delhome";
 	}
 
 }

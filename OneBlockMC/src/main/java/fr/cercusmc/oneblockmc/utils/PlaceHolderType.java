@@ -12,7 +12,8 @@ public enum PlaceHolderType {
 	LOC_X("%x%"),
 	LOC_Y("%y%"),
 	LOC_Z("%z%"),
-	LEVEL("%level%");
+	LEVEL("%level%"),
+	SYNTAX("%syntax%");
 	
 	
 	private String placeHolderName;

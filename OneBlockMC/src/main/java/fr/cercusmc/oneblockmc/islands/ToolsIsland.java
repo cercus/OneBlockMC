@@ -18,6 +18,7 @@ import org.bukkit.block.Biome;
 import org.bukkit.configuration.ConfigurationSection;
 
 import fr.cercusmc.oneblockmc.Main;
+import fr.cercusmc.oneblockmc.utils.Constantes;
 import fr.cercusmc.oneblockmc.utils.FileCustom;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
 import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
@@ -25,8 +26,6 @@ import fr.cercusmc.oneblockmc.utils.Position;
 
 public class ToolsIsland {
 	
-	private static final String MESSAGES = "messages";
-	private static final String ISLANDS = "islands";
 
 	private ToolsIsland() {}
 	
@@ -37,8 +36,8 @@ public class ToolsIsland {
 	 */
 	public static Island createIsland(UUID uuid) {
 		
-		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get(MESSAGES).getString("island.creating_island"));
-		FileCustom c = Main.getFiles().get(ISLANDS);
+		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get(Constantes.MESSAGES).getString("island.creating_island"));
+		FileCustom c = Main.getFiles().get(Constantes.ISLANDS);
 		int nbIsland = c.getInt("nbIslands");
 		Position islandPosition = Position.findNext(nbIsland);
 		Location locIsland = islandPosition.toLocation(Main.getOverworld());
@@ -73,7 +72,7 @@ public class ToolsIsland {
 		map.put(PlaceHolderType.LOC_X, locIsland.getX()+"");
 		map.put(PlaceHolderType.LOC_Y, locIsland.getY()+"");
 		map.put(PlaceHolderType.LOC_Z, locIsland.getZ()+"");
-		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get(MESSAGES).getString("island.successfull_create_island"), map);
+		MessageUtil.sendMessage(Bukkit.getPlayer(uuid), Main.getFiles().get(Constantes.MESSAGES).getString("island.successfull_create_island"), map);
 		
 		
 		return newIsland;
@@ -87,8 +86,8 @@ public class ToolsIsland {
 	public static Island deleteIsland(Island is, UUID uuid) {
 		if(is == null) return null;
 		DeleteIsland.deleteIsland(is);
-		Main.getFiles().get(ISLANDS).set(ISLANDS+"."+uuid.toString(), null);
-		MessageUtil.sendMessage(uuid, Main.getFiles().get(MESSAGES).getString("island.successfull_delete_island"));
+		Main.getFiles().get(Constantes.ISLANDS).set(Constantes.ISLANDS+"."+uuid.toString(), null);
+		MessageUtil.sendMessage(uuid, Main.getFiles().get(Constantes.MESSAGES).getString("island.successfull_delete_island"));
 		updateIslandVariable(is);
 		Bukkit.getPlayer(uuid).teleport(Main.getIslandConfig().getSpawn());
 		return is;
@@ -112,7 +111,7 @@ public class ToolsIsland {
 	}
 	
 	public static Island updateIslandInFile(Island island) {
-		FileCustom c = Main.getFiles().get(ISLANDS);
+		FileCustom c = Main.getFiles().get(Constantes.ISLANDS);
 		ConfigurationSection section = null;
 		String beginPath = "islands.";
 		if(c.contains(beginPath+island.getOwner().toString())) {
@@ -149,10 +148,10 @@ public class ToolsIsland {
 	
 	public static Map<UUID, Island> getAllIslands() {
 		Map<UUID, Island> islands = new HashMap<>();
-		FileCustom c = Main.getFiles().get(ISLANDS);
-		if(c.getConfigurationSection(ISLANDS) == null)
+		FileCustom c = Main.getFiles().get(Constantes.ISLANDS);
+		if(c.getConfigurationSection(Constantes.ISLANDS) == null)
 			return islands;
-		for(String i : c.getConfigurationSection(ISLANDS).getKeys(false)) {
+		for(String i : c.getConfigurationSection(Constantes.ISLANDS).getKeys(false)) {
 			Island island = new Island();
 			island.setOwner(UUID.fromString(i));
 			String ownerPath = "islands."+i;

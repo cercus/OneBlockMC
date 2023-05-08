@@ -7,10 +7,25 @@ island:
    not_island: "§cVous ne possédez pas d'île"
    not_owner: "§cVous n'êtes pas le propriétaire de l'île"
    message_member_deleted_island: "§eVotre île a été supprimé par son propriétaire"
+   not_home: "§cVous ne possedez pas de home sur votre île"
+   successfull_teleport_home: "§eTéléportation vers votre home avec succès"
+   successfull_change_home: "§eVotre home a bien été changé. Nouveau home crée en §6x=%x%, y=%y%, z=%z%"
+   successfull_delete_home: "§eVotre home a bien été supprimé"
 commands:
+   too_many_arg: "§cTrop ou pas assez d'argument. §6Syntaxe : %syntax%" 
    delete:
       syntax: "§e/ob delete"
       description: "§eSupprimer son île (irreversible)"
    level:
       syntax: "§e/ob level"
       description: "§eVoir son niveau d'île"
+   home:
+      syntax: "§e/ob home"
+      description: "§eSe téléporter à son home d'île"
+   sethome:
+      syntax: "§e/ob sethome"
+      description: "§eSet son home d'île" 
+   delhome:
+      syntax: "§e/ob delhome"
+      description: "§eSupprimer son home d'île" 
+        
