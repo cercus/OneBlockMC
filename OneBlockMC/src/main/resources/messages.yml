@@ -11,6 +11,15 @@ island:
    successfull_teleport_home: "§eTéléportation vers votre home avec succès"
    successfull_change_home: "§eVotre home a bien été changé. Nouveau home crée en §6x=%x%, y=%y%, z=%z%"
    successfull_delete_home: "§eVotre home a bien été supprimé"
+   infos:
+      - "§6===== §eInformations de l'île §6====="
+      - "§eNom de l'île : §6%islandName%"
+      - "§ePropriétaire : §6%islandOwner%"
+      - "§eLevel d'île : §6%level%"
+      - "§ePhase actuelle : §6%currentPhase% §e>> Phase suivante : §6%nextPhase%"
+      - "§eNombre de blocs miné(s) : §6%nb%"
+      - "§eRayon de l'île : §6%radius%"
+      - "§eBiome de l'île : §6%biomeName%"
 commands:
    too_many_arg: "§cTrop ou pas assez d'argument. §6Syntaxe : %syntax%" 
    delete:
@@ -27,5 +36,8 @@ commands:
       description: "§eSet son home d'île" 
    delhome:
       syntax: "§e/ob delhome"
-      description: "§eSupprimer son home d'île" 
+      description: "§eSupprimer son home d'île"
+   infos:
+      syntax: "§e/ob infos"
+      description: "§eVoir les infos de son île"
         

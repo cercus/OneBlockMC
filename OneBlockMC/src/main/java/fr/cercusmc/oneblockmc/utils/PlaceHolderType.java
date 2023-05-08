@@ -3,8 +3,8 @@ package fr.cercusmc.oneblockmc.utils;
 public enum PlaceHolderType {
 	
 	NB_BLOCK("%nb%"),
-	CURRENT_PHASE("%current_phase%"),
-	NEXT_PHASE("%next_phase%"),
+	CURRENT_PHASE("%currentPhase%"),
+	NEXT_PHASE("%nextPhase%"),
 	PLAYER("%player%"),
 	FILE_NAME("%fileName%"),
 	MATERIAL_NAME("%materialName%"),
@@ -13,7 +13,10 @@ public enum PlaceHolderType {
 	LOC_Y("%y%"),
 	LOC_Z("%z%"),
 	LEVEL("%level%"),
-	SYNTAX("%syntax%");
+	SYNTAX("%syntax%"),
+	ISLAND_NAME("%islandName%"),
+	ISLAND_OWNER("%islandOwner%"),
+	ISLAND_RADIUS("%radius%");
 	
 	
 	private String placeHolderName;

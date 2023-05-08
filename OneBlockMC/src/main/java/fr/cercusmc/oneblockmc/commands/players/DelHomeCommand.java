@@ -29,12 +29,12 @@ public class DelHomeCommand implements SubCommand {
 
 	@Override
 	public String getDescription() {
-		return null;
+		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.delhome.description");
 	}
 
 	@Override
 	public String getSyntax() {
-		return null;
+		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.delhome.syntax");
 	}
 
 	@Override

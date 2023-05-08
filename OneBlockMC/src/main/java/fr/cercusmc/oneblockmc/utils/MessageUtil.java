@@ -176,6 +176,8 @@ public class MessageUtil {
 			player.sendMessage(format(message, placeholders, values));
 	}
 	
+	
+	
 	/**
 	 * Send a message to player by his pseudo
 	 * 
@@ -191,6 +193,10 @@ public class MessageUtil {
 			logger.info(format(message, values));
 		else
 			player.sendMessage(format(message, values));
+	}
+	
+	public static void sendMessage(Player player, Collection<String> messages, Map<PlaceHolderType, String> values) {
+		messages.forEach(k -> sendMessage(player, k, values));
 	}
 
 	/**
