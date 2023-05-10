@@ -18,6 +18,7 @@ import fr.cercusmc.oneblockmc.commands.players.BiomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.DelHomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.DeleteCommand;
 import fr.cercusmc.oneblockmc.commands.players.HomeCommand;
+import fr.cercusmc.oneblockmc.commands.players.InfosCommand;
 import fr.cercusmc.oneblockmc.commands.players.LevelCommand;
 import fr.cercusmc.oneblockmc.commands.players.SetHomeCommand;
 import fr.cercusmc.oneblockmc.islands.Island;
@@ -37,7 +38,8 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		this.subCommands = new ArrayList<>();
 		this.subCommandsAdmin = new ArrayList<>();
 
-		addAll(new DeleteCommand(), new LevelCommand(), new HomeCommand(), new SetHomeCommand(), new DelHomeCommand(), new BiomeCommand());
+		addAll(new DeleteCommand(), new LevelCommand(), new HomeCommand(), new SetHomeCommand(), new DelHomeCommand(),
+				new BiomeCommand(), new InfosCommand());
 
 	}
 
@@ -105,8 +107,8 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		return list;
 	}
 
-	public static boolean messageTooManyArgs(String[] args, Player p, SubCommand command) {
-		if (args.length > 1) {
+	public static boolean messageTooManyArgs(String[] args, Player p, SubCommand command, int number) {
+		if (args.length >= number) {
 			EnumMap<PlaceHolderType, String> map = new EnumMap<>(PlaceHolderType.class);
 			map.put(PlaceHolderType.SYNTAX, command.getSyntax());
 			MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("commands.too_many_args"),

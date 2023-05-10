@@ -30,6 +30,8 @@ import fr.cercusmc.oneblockmc.utils.menus.PlayerMenuUtility;
 
 public class BiomeMenu extends PaginatedMenu {
 
+	private static final String BIOMES = "biomes.";
+
 	public BiomeMenu(PlayerMenuUtility playerMenuUtility) {
 		super(playerMenuUtility);
 
@@ -50,7 +52,7 @@ public class BiomeMenu extends PaginatedMenu {
 			ItemBuilder it = new ItemBuilder(Material.valueOf(icon));
 			it.setName(name).setLores(lore);
 			Island is = ToolsIsland.getIslandOfPlayer(playerMenuUtility.getOwner().getUniqueId());
-			if(is.getBiome().name().equals(i))
+			if (is.getBiome().name().equals(i))
 				it.addEnchantment(Enchantment.ARROW_DAMAGE, 1).addFlag(ItemFlag.HIDE_ENCHANTS);
 			its.add(it.toItemStack());
 
@@ -121,22 +123,28 @@ public class BiomeMenu extends PaginatedMenu {
 		} else {
 			String materialName = e.getCurrentItem().getType().name();
 			Optional<Biome> biomeChoose = getBiomeByMaterialAndName(materialName, name);
-			biomeChoose.ifPresent(k -> ToolsIsland.changeBiomeOfIsland(e.getWhoClicked().getUniqueId(), k));
+			final boolean changeBiome = biomeChoose.isPresent()
+					&& Main.getFiles().get(Constantes.BIOMES).getBoolean(BIOMES + biomeChoose.get().name() + ".permission")
+					&& e.getWhoClicked().hasPermission("oneblock.biome." + biomeChoose.get().name().toLowerCase());
 			
+			if (changeBiome) 
+				ToolsIsland.changeBiomeOfIsland(e.getWhoClicked().getUniqueId(), biomeChoose.get());
+
 		}
 
 	}
-	
+
 	private Optional<Biome> getBiomeByMaterialAndName(String material, String name) {
 		final FileCustom fileCustom = Main.getFiles().get("biomes");
-		for(String i : fileCustom.getConfigurationSection("biomes").getKeys(false)) {
-			
-			if(ValidateUtil.checkEnum(Biome.class, i) && fileCustom.getString("biomes."+i+".name").equals(name) && fileCustom.getString("biomes."+i+".icon").equals(material))
+		for (String i : fileCustom.getConfigurationSection("biomes").getKeys(false)) {
+
+			if (ValidateUtil.checkEnum(Biome.class, i) && fileCustom.getString(BIOMES + i + ".name").equals(name)
+					&& fileCustom.getString(BIOMES + i + ".icon").equals(material))
 				return Optional.of(Biome.valueOf(i));
 		}
-		
+
 		return Optional.empty();
-		
+
 	}
 
 }

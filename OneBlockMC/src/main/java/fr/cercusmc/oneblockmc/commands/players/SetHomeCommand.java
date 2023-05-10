@@ -44,7 +44,7 @@ public class SetHomeCommand implements SubCommand {
 	public void perform(CommandSender sender, String[] args) {
 
 		Player p = (Player) sender;
-		if (OneBlockCommand.messageTooManyArgs(args, p, this))
+		if (OneBlockCommand.messageTooManyArgs(args, p, this, 2))
 			return;
 
 		Island is = ToolsIsland.getIslandOfPlayer(p.getUniqueId());

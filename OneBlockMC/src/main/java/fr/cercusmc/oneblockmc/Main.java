@@ -10,6 +10,9 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.cercusmc.oneblockmc.commands.OneBlockCommand;
+import fr.cercusmc.oneblockmc.events.JoinEvent;
+import fr.cercusmc.oneblockmc.events.MoveEvent;
+import fr.cercusmc.oneblockmc.events.TeleportEvent;
 import fr.cercusmc.oneblockmc.generators.VoidGenerator;
 import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.IslandConfig;
@@ -55,10 +58,20 @@ public class Main extends JavaPlugin {
 		getCommand("ob").setExecutor(new OneBlockCommand());
 		getCommand("ob").setTabCompleter(new OneBlockCommand());
 		
+		registerEvents();
+		
 		MenuManager.setup(getServer(), this);
 		
 	}
 	
+
+	private void registerEvents() {
+		getServer().getPluginManager().registerEvents(new JoinEvent(), instance);
+		getServer().getPluginManager().registerEvents(new MoveEvent(), instance);
+		getServer().getPluginManager().registerEvents(new TeleportEvent(), instance);
+		
+	}
+
 	private static void loadFiles() {
 		files.put("islands", new FileCustom(instance, "islands.yml"));
 		files.put("messages", new FileCustom(instance, "messages.yml"));

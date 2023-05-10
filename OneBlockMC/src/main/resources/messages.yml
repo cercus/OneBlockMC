@@ -14,8 +14,6 @@ menus:
       name: "§cFermer le menu"
       icon: "BARRIER"
       lore: []
-    
-
 island:
    creating_island: "§eVotre île est en cours de création..."
    successfull_create_island: "§eVotre île a bien été crée en §6x=%x%, y=%y%, z=%z%"
@@ -29,6 +27,10 @@ island:
    successfull_teleport_home: "§eTéléportation vers votre home avec succès"
    successfull_change_home: "§eVotre home a bien été changé. Nouveau home crée en §6x=%x%, y=%y%, z=%z%"
    successfull_delete_home: "§eVotre home a bien été supprimé"
+   successfull_banned: "§eLe joueur %player% a bien été ban de voter île"
+   player_doesnt_exist: "§eLe joueur specifié n'existe pas"
+   player_already_banned: "§eCe joueur est déjà banni de votre île"
+   player_banned: "§cVOus êtes banni de cet île" 
    infos:
       - "§6===== §eInformations de l'île §6====="
       - "§eNom de l'île : §6%islandName%"
@@ -61,4 +63,7 @@ commands:
    biomes:
       syntax: "§e/ob biomes"
       description: "§eOuvrir le menu des biomes"
+   ban:
+      syntax: "§e/ob ban <player>"
+      description: "§eBannir un joueur de son île"
         

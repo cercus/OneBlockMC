@@ -44,7 +44,7 @@ public class BiomeCommand implements SubCommand {
 	public void perform(CommandSender sender, String[] args) {
 		Player p = (Player) sender;
 		Island is = ToolsIsland.getIslandOfPlayer(p.getUniqueId());
-		if(OneBlockCommand.messageTooManyArgs(args, p, this)) return;
+		if(OneBlockCommand.messageTooManyArgs(args, p, this, 2)) return;
 		if(is == null) {
 			MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.not_island"));
 			return;
