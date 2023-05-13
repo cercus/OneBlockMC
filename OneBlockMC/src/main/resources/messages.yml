@@ -1,0 +1,81 @@
+menus:
+   last_page: "§eVous êtes sur la dernière page"
+   first_page: "§eVous êtes sur la première page"
+   current_page: "§eVous êtes à la page §6%page%§e/§6%maxPage%"
+   icon_previous_page:
+      name: "§ePage précédente"
+      icon: "DARK_OAK_BUTTON"
+      lore: []
+   icon_next_page:
+      name: "§ePage suivante"
+      icon: "DARK_OAK_BUTTON"
+      lore: []
+   close_menu:
+      name: "§cFermer le menu"
+      icon: "BARRIER"
+      lore: []
+island:
+   creating_island: "§eVotre île est en cours de création..."
+   successfull_create_island: "§eVotre île a bien été crée en §6x=%x%, y=%y%, z=%z%"
+   successfull_change_biome: "§eLe biome de votre île a bien été changé en §6%biomeName%. Déconnectez-vous ou changez de monde pour voir les effets"
+   successfull_calc_level: "§eVotre level d'île : §6%level%"
+   successfull_delete_island: "§eVotre île a bien été supprimé"
+   not_island: "§cVous ne possédez pas d'île"
+   not_owner: "§cVous n'êtes pas le propriétaire de l'île"
+   message_member_deleted_island: "§eVotre île a été supprimé par son propriétaire"
+   not_home: "§cVous ne possedez pas de home sur votre île"
+   successfull_teleport_home: "§eTéléportation vers votre home avec succès"
+   successfull_change_home: "§eVotre home a bien été changé. Nouveau home crée en §6x=%x%, y=%y%, z=%z%"
+   successfull_delete_home: "§eVotre home a bien été supprimé"
+   successfull_banned: "§eLe joueur %player% a bien été ban de votre île"
+   player_doesnt_exist: "§eLe joueur specifié n'existe pas"
+   player_already_banned: "§eCe joueur est déjà banni de votre île"
+   player_banned: "§cVous êtes banni de cet île"
+   auto_ban_deny: "§cVous ne pouvez pas ban un membre de votre île ou vous-même"
+   successfull_unbanned: "§eLe joueur %player% a bien été unban de votre île"
+   player_already_unbanned: "§cCe joueur n'est pas ban de votre île"
+   player_unbanned: "§eVous n'êtes plus banni de l'île de %player%"
+   successfull_kicked: "§cLe joueur %player% a bien été kick de votre île"
+   player_kicked: "§cVous avez été kick de l'île de %player%"
+   infos:
+      - "§6===== §eInformations de l'île §6====="
+      - "§eNom de l'île : §6%islandName%"
+      - "§ePropriétaire : §6%islandOwner%"
+      - "§eLevel d'île : §6%level%"
+      - "§ePhase actuelle : §6%currentPhase% §e>> Phase suivante : §6%nextPhase%"
+      - "§eNombre de blocs miné(s) : §6%nb%"
+      - "§eRayon de l'île : §6%radius%"
+      - "§eBiome de l'île : §6%biomeName%"
+commands:
+   too_many_arg: "§cTrop ou pas assez d'argument. §6Syntaxe : %syntax%" 
+   delete:
+      syntax: "§e/ob delete"
+      description: "§eSupprimer son île (irreversible)"
+   level:
+      syntax: "§e/ob level"
+      description: "§eVoir son niveau d'île"
+   home:
+      syntax: "§e/ob home"
+      description: "§eSe téléporter à son home d'île"
+   sethome:
+      syntax: "§e/ob sethome"
+      description: "§eSet son home d'île" 
+   delhome:
+      syntax: "§e/ob delhome"
+      description: "§eSupprimer son home d'île"
+   infos:
+      syntax: "§e/ob infos"
+      description: "§eVoir les infos de son île"
+   biomes:
+      syntax: "§e/ob biomes"
+      description: "§eOuvrir le menu des biomes"
+   ban:
+      syntax: "§e/ob ban <player>"
+      description: "§eBannir un joueur de son île"
+   unban:
+      syntax: "§e/ob unban <player>"
+      description: "§eDe-bannir un joueur"
+   kick:
+      syntax: "§e/ob kick <player>"
+      description: "§eKick un joueur"
+        

@@ -1,6 +1,17 @@
 config:
-   overworld: "world"
+   overworld: "Oneblock_overworld"
    positionY: 73
-   biomeDefault: "PLAINS"
+   biome_default: "PLAINS"
    radiusMin: 25
    radiusMax: 500
+   space_between_island: 20
+   spawn:
+      world: "world"
+      x: 0
+      y: 68
+      z: 0
+   menus:
+      filler:
+         icon: "GRAY_STAINED_GLASS_PANE"
+         name: ""
+         lore: ""

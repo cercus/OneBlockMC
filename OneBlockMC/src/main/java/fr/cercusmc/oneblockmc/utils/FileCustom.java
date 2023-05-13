@@ -18,7 +18,7 @@ public class FileCustom {
 	private File file;
     private FileConfiguration fileConfiguration;
     private String fileName;
-    private Logger logger;
+    private Logger logger = new Logger();
 
     /**
      * Contruct a new object FileCustom
@@ -162,6 +162,7 @@ public class FileCustom {
     public List<String> getStringList(String path) {
         return fileConfiguration.getStringList(path);
     }
+    
 
     public List<Double> getDoubleList(String path) {
         return fileConfiguration.getDoubleList(path);

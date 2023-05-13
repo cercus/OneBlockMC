@@ -19,7 +19,7 @@ public record Position(int x, int y, int z) {
 	public static Position findNext(int num){
         // Direction du mouvement de la spirale
         int dx = 0;
-        int dz = 2 * Main.getInstance().getConfig().getInt("oneblock.space_between_islands");
+        int dz = 2 * Main.getIslandConfig().getSpaceBetweenIsland();
 
         // Taille du segment courant
         int segmentLength = 1;

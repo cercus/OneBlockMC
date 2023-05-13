@@ -113,6 +113,10 @@ public class Island {
 		this.islandStats = islandStats;
 	}
 	
+	public boolean playerIsOwner(UUID uuid) {
+		return getOwner().equals(uuid);
+	}
+	
 	
 	
 	

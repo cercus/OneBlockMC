@@ -3,3 +3,5 @@ name: Oneblock
 author: CercusMC
 version: 1.0
 api-version: 1.19
+commands:
+   ob: 
