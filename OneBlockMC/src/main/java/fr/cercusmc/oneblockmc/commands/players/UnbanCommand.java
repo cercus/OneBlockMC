@@ -20,11 +20,11 @@ import fr.cercusmc.oneblockmc.utils.MessageUtil;
 import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
 import fr.cercusmc.oneblockmc.utils.SubCommand;
 
-public class BanCommand implements SubCommand {
-
+public class UnbanCommand implements SubCommand {
+	
 	@Override
 	public String getName() {
-		return "ban";
+		return "unban";
 	}
 
 	@Override
@@ -34,12 +34,12 @@ public class BanCommand implements SubCommand {
 
 	@Override
 	public String getDescription() {
-		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.ban.description");
+		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.unban.description");
 	}
 
 	@Override
 	public String getSyntax() {
-		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.ban.syntax");
+		return Main.getFiles().get(Constantes.MESSAGES).getString("commands.unban.syntax");
 	}
 
 	@Override
@@ -61,23 +61,17 @@ public class BanCommand implements SubCommand {
 		
 		Optional<OfflinePlayer> offlinePlayer = Arrays.asList(Bukkit.getOfflinePlayers()).stream().filter(k -> k.getName().equals(args[1])).findFirst();
 		if(offlinePlayer.isPresent()) {
-			
-			if(p.equals(offlinePlayer.get())) {
-				MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.auto_ban_deny"));
-				return;
-			}
-			
 			if(is.getBans().contains(offlinePlayer.get().getUniqueId().toString())) {
-				MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.player_already_banned"));
-			} else {
-				EnumMap<PlaceHolderType, String> map = new EnumMap<>(PlaceHolderType.class);
-				map.put(PlaceHolderType.PLAYER, offlinePlayer.get().getName());
-				is.addBan(offlinePlayer.get().getUniqueId().toString());
+				is.removeBan(offlinePlayer.get().getUniqueId().toString());
 				ToolsIsland.updateIslandInFile(is);
 				ToolsIsland.updateIslandVariable(is);
-				MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.successfull_banned"), map);
-				MessageUtil.sendMessage(offlinePlayer.get().getPlayer(), Main.getFiles().get(Constantes.MESSAGES).getString("island.player_banned"));
-				offlinePlayer.get().getPlayer().teleport(Main.getIslandConfig().getSpawn());
+				EnumMap<PlaceHolderType, String> map = new EnumMap<>(PlaceHolderType.class);
+				map.put(PlaceHolderType.PLAYER, offlinePlayer.get().getName());
+				MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.successfull_unbanned"), map);
+				map.replace(PlaceHolderType.PLAYER, p.getName());
+				MessageUtil.sendMessage(offlinePlayer.get().getPlayer(), Main.getFiles().get(Constantes.MESSAGES).getString("island.player_unbanned"), map);	
+			} else {
+				MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.player_already_unbanned"));
 			}
 		} else {
 			MessageUtil.sendMessage(p, Main.getFiles().get(Constantes.MESSAGES).getString("island.player_doesnt_exist"));

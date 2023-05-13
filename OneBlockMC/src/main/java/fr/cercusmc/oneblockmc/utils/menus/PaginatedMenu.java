@@ -109,7 +109,6 @@ public abstract class PaginatedMenu extends Menu {
 		if (getData() != null && !getData().isEmpty()) {
 			for (int i = 0; i < getMaxItemsPerPage(); i++) {
 				index = getMaxItemsPerPage() * page + i;
-				logger.info(index + "");
 				if (index >= getData().size())
 					break;
 				if (getData().get(index) != null) {

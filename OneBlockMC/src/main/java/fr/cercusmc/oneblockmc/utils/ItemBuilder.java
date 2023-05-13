@@ -59,7 +59,7 @@ public class ItemBuilder {
 	public ItemStack toItemStack() {
 		this.itemMeta.setDisplayName(this.name);
 		this.itemMeta.setLore(this.lores);
-		this.itemStack.addUnsafeEnchantments(this.enchantments);
+		this.enchantments.forEach((k, v) -> this.itemMeta.addEnchant(k, v, true));
 		this.flags.forEach(k -> this.itemMeta.addItemFlags(k));
 		this.itemStack.setItemMeta(this.itemMeta);
 		return this.itemStack;

@@ -97,25 +97,26 @@ public class BiomeMenu extends PaginatedMenu {
 		map.put(PlaceHolderType.MAX_PAGE, Math.ceil(getData().size() * 1.0 / getMaxItemsPerPage()) + "");
 
 		String name = e.getCurrentItem().getItemMeta().getDisplayName();
+		
 		if (name.equals(MessageUtil
 				.format(Main.getFiles().get(Constantes.MESSAGES).getString("menus.icon_previous_page.name")))) {
 
 			if (prevPage())
 				MessageUtil.sendMessage((Player) e.getWhoClicked(),
-						Main.getFiles().get(Constantes.MESSAGES).getString("current_page"), map);
+						Main.getFiles().get(Constantes.MESSAGES).getString("menus.current_page"), map);
 			else
 				MessageUtil.sendMessage((Player) e.getWhoClicked(),
-						Main.getFiles().get(Constantes.MESSAGES).getString("first_page"));
+						Main.getFiles().get(Constantes.MESSAGES).getString("menus.first_page"));
 
 		} else if (name.equals(
 				MessageUtil.format(Main.getFiles().get(Constantes.MESSAGES).getString("menus.icon_next_page.name")))) {
 			if (nextPage())
 				MessageUtil.sendMessage((Player) e.getWhoClicked(),
-						Main.getFiles().get(Constantes.MESSAGES).getString("current_page"), map);
+						Main.getFiles().get(Constantes.MESSAGES).getString("menus.current_page"), map);
 
 			else
 				MessageUtil.sendMessage((Player) e.getWhoClicked(),
-						Main.getFiles().get(Constantes.MESSAGES).getString("last_page"));
+						Main.getFiles().get(Constantes.MESSAGES).getString("menus.last_page"));
 
 		} else if (name.equals(
 				MessageUtil.format(Main.getFiles().get(Constantes.MESSAGES).getString("menus.close_menu.name")))) {
@@ -123,6 +124,7 @@ public class BiomeMenu extends PaginatedMenu {
 		} else {
 			String materialName = e.getCurrentItem().getType().name();
 			Optional<Biome> biomeChoose = getBiomeByMaterialAndName(materialName, name);
+			
 			final boolean changeBiome = biomeChoose.isPresent()
 					&& Main.getFiles().get(Constantes.BIOMES).getBoolean(BIOMES + biomeChoose.get().name() + ".permission")
 					&& e.getWhoClicked().hasPermission("oneblock.biome." + biomeChoose.get().name().toLowerCase());
@@ -138,7 +140,7 @@ public class BiomeMenu extends PaginatedMenu {
 		final FileCustom fileCustom = Main.getFiles().get("biomes");
 		for (String i : fileCustom.getConfigurationSection("biomes").getKeys(false)) {
 
-			if (ValidateUtil.checkEnum(Biome.class, i) && fileCustom.getString(BIOMES + i + ".name").equals(name)
+			if (ValidateUtil.checkEnum(Biome.class, i) && MessageUtil.format(fileCustom.getString(BIOMES + i + ".name")).equals(name)
 					&& fileCustom.getString(BIOMES + i + ".icon").equals(material))
 				return Optional.of(Biome.valueOf(i));
 		}

@@ -35,25 +35,34 @@ public class Main extends JavaPlugin {
 	
 	private static World overworld;
 	
-	private static void setStaticVariable() {
-		islands = ToolsIsland.getAllIslands();
+	public static void setIslandConfig() {
 		islandConfig = new IslandConfig();
+	}
+	
+	public static void setOverworld() {
 		overworld = ToolsIsland.createWorld(Environment.NORMAL, islandConfig.getOverworld());
 	}
 	
-	@Override
-	public void onLoad() {
-		super.onLoad();
-		this.chunkGenerator = new VoidGenerator();
+	public static void setIslands() {
+		islands = ToolsIsland.getAllIslands();
 	}
 	
 	@Override
 	public void onEnable() {
-		setInstance(this);
 		
+		setInstance(this);
 		saveDefaultConfig();
+		
+		this.chunkGenerator = new VoidGenerator();
+		
+		
+		setIslandConfig();
+		
+		setOverworld();
 		loadFiles();
-		setStaticVariable();
+		
+		setIslands();
+		
 		
 		getCommand("ob").setExecutor(new OneBlockCommand());
 		getCommand("ob").setTabCompleter(new OneBlockCommand());
@@ -61,7 +70,7 @@ public class Main extends JavaPlugin {
 		registerEvents();
 		
 		MenuManager.setup(getServer(), this);
-		
+				
 	}
 	
 

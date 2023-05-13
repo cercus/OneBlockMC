@@ -14,13 +14,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 import fr.cercusmc.oneblockmc.Main;
+import fr.cercusmc.oneblockmc.commands.players.BanCommand;
 import fr.cercusmc.oneblockmc.commands.players.BiomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.DelHomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.DeleteCommand;
 import fr.cercusmc.oneblockmc.commands.players.HomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.InfosCommand;
+import fr.cercusmc.oneblockmc.commands.players.KickCommand;
 import fr.cercusmc.oneblockmc.commands.players.LevelCommand;
 import fr.cercusmc.oneblockmc.commands.players.SetHomeCommand;
+import fr.cercusmc.oneblockmc.commands.players.UnbanCommand;
 import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
 import fr.cercusmc.oneblockmc.utils.Constantes;
@@ -39,7 +42,7 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		this.subCommandsAdmin = new ArrayList<>();
 
 		addAll(new DeleteCommand(), new LevelCommand(), new HomeCommand(), new SetHomeCommand(), new DelHomeCommand(),
-				new BiomeCommand(), new InfosCommand());
+				new BiomeCommand(), new InfosCommand(), new KickCommand(), new BanCommand(), new UnbanCommand());
 
 	}
 

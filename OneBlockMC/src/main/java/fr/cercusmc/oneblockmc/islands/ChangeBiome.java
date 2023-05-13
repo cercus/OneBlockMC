@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import fr.cercusmc.oneblockmc.Main;
@@ -36,7 +35,7 @@ public class ChangeBiome {
 		 if(world == null)
 			 completableFuture.complete(null);
 		 else
-			 Bukkit.getScheduler().runTask(Main.getInstance(), () -> changeBiome(is, world, world.getMaxHeight(), p, 0, completableFuture, biome));
+			 Bukkit.getScheduler().runTask(Main.getInstance(), () -> changeBiome(is, world, world.getMaxHeight(), p, world.getMaxHeight(), completableFuture, biome));
 		return completableFuture;
 	}
 
@@ -44,17 +43,17 @@ public class ChangeBiome {
 			CompletableFuture<Void> completableFuture, Biome biome) {
 		Location center = is.getLocations().getCenterIsland();
 		for (int x = center.getBlockX() - is.getIslandStats().getRadiusIsland(); x <= center.getBlockX() + is.getIslandStats().getRadiusIsland(); x++) {
-			for (int z = center.getBlockX() - is.getIslandStats().getRadiusIsland(); z <= center.getBlockX()
+			for (int z = center.getBlockZ() - is.getIslandStats().getRadiusIsland(); z <= center.getBlockZ()
 					+ is.getIslandStats().getRadiusIsland(); z++) {
-				Block b = world.getBlockAt(x, y, z);
-				b.setBiome(biome);
-
+				world.setBiome(x, y, z, biome);
 			}
 		}
-		if (y <= maxHeight)
+		if (y < world.getMinHeight()) {
 			completableFuture.complete(null);
-		else
+		} else {
 			changeBiome(is, world, maxHeight, p, y-1, completableFuture, biome);
+			
+		}
 	}
 
 }

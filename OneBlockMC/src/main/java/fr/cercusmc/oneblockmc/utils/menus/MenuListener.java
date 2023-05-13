@@ -28,15 +28,19 @@ public class MenuListener implements Listener {
             if (menu.cancelAllClicks()) {
                 e.setCancelled(true); //prevent them from fucking with the inventory
             }
-
             //Call the handleMenu object which takes the event and processes it
+            
             try {
                 menu.handleMenu(e);
             } catch (Exception ex) {
+            	ex.printStackTrace();
                 logger.error(ChatColor.RED + "THE MENU MANAGER HAS NOT BEEN CONFIGURED. CALL MENUMANAGER.SETUP()");
             }
+            
+            // ^[a-zA-Z_]+:[0-9]+{name=(\[".+"]|\[\]|\["\s*"\]),\s*lore=(\[".+"]|\[\]|\["\s*"\]),\s*enchantments=((\[\])|(\[""\])|(\["[A-Za-z_]+:[0-9]+"\]})|\[("[A-Za-z_]+:[0-9]+",\s*)+"[A-Za-z_]+:[0-9]+"]})
+            
         }
-
+        
     }
 
 }

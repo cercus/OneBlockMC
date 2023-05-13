@@ -17,7 +17,7 @@ menus:
 island:
    creating_island: "§eVotre île est en cours de création..."
    successfull_create_island: "§eVotre île a bien été crée en §6x=%x%, y=%y%, z=%z%"
-   successfull_change_biome: "§eLe biome de votre île a bien été changé en §6%biomeName%"
+   successfull_change_biome: "§eLe biome de votre île a bien été changé en §6%biomeName%. Déconnectez-vous ou changez de monde pour voir les effets"
    successfull_calc_level: "§eVotre level d'île : §6%level%"
    successfull_delete_island: "§eVotre île a bien été supprimé"
    not_island: "§cVous ne possédez pas d'île"
@@ -27,10 +27,16 @@ island:
    successfull_teleport_home: "§eTéléportation vers votre home avec succès"
    successfull_change_home: "§eVotre home a bien été changé. Nouveau home crée en §6x=%x%, y=%y%, z=%z%"
    successfull_delete_home: "§eVotre home a bien été supprimé"
-   successfull_banned: "§eLe joueur %player% a bien été ban de voter île"
+   successfull_banned: "§eLe joueur %player% a bien été ban de votre île"
    player_doesnt_exist: "§eLe joueur specifié n'existe pas"
    player_already_banned: "§eCe joueur est déjà banni de votre île"
-   player_banned: "§cVOus êtes banni de cet île" 
+   player_banned: "§cVous êtes banni de cet île"
+   auto_ban_deny: "§cVous ne pouvez pas ban un membre de votre île ou vous-même"
+   successfull_unbanned: "§eLe joueur %player% a bien été unban de votre île"
+   player_already_unbanned: "§cCe joueur n'est pas ban de votre île"
+   player_unbanned: "§eVous n'êtes plus banni de l'île de %player%"
+   successfull_kicked: "§cLe joueur %player% a bien été kick de votre île"
+   player_kicked: "§cVous avez été kick de l'île de %player%"
    infos:
       - "§6===== §eInformations de l'île §6====="
       - "§eNom de l'île : §6%islandName%"
@@ -66,4 +72,10 @@ commands:
    ban:
       syntax: "§e/ob ban <player>"
       description: "§eBannir un joueur de son île"
+   unban:
+      syntax: "§e/ob unban <player>"
+      description: "§eDe-bannir un joueur"
+   kick:
+      syntax: "§e/ob kick <player>"
+      description: "§eKick un joueur"
         
