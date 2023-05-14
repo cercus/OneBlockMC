@@ -1,4 +1,4 @@
-package fr.cercusmc.oneblockmc.utils;
+package fr.cercusmc.oneblockmc.utils.enums;
 
 public enum PlaceHolderType {
 	

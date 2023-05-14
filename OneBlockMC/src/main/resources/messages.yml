@@ -37,6 +37,7 @@ island:
    player_unbanned: "§eVous n'êtes plus banni de l'île de %player%"
    successfull_kicked: "§cLe joueur %player% a bien été kick de votre île"
    player_kicked: "§cVous avez été kick de l'île de %player%"
+   successfull_phase_passed: "§eVous passez à la phase §r%nextPhase% §e!"
    infos:
       - "§6===== §eInformations de l'île §6====="
       - "§eNom de l'île : §6%islandName%"

@@ -15,3 +15,26 @@ config:
          icon: "GRAY_STAINED_GLASS_PANE"
          name: ""
          lore: ""
+   random_block:
+      probability_generate_block: 60
+      # Probability of generate chest
+      probability_generate_chest: 10
+      # Probability of generate entities
+      probability_generate_entities: 30
+      # Min number items in chest
+      min_item_in_chest: 1
+      # Max number items in chest
+      max_item_in_chest: 5
+      # Min number for one item
+      min_count_one_item_in_chest: 1
+      # Max number for one item
+      max_count_one_item_in_chest: 4
+      # Min number of enchantment for ENCHANTED_BOOK item
+      min_enchantment_one_enchanted_book: 1
+      # Max number of enchantment for ENCHANTED_BOOK item
+      max_enchantment_one_enchanted_book: 3
+      particle_generate_block: "CRIT"
+      particle_generate_entity: "FIREWORKS_SPARK"
+      sound_generate_entity: "BLOCK_ANVIL_FALL"
+      
+      
