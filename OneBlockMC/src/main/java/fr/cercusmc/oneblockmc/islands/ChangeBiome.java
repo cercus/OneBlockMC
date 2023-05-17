@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import fr.cercusmc.oneblockmc.Main;
 import fr.cercusmc.oneblockmc.utils.Constantes;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
-import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
+import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
 
 public class ChangeBiome {
 	

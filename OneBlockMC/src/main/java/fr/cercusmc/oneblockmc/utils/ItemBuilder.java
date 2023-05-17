@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemBuilder {
@@ -64,6 +65,16 @@ public class ItemBuilder {
 		this.itemStack.setItemMeta(this.itemMeta);
 		return this.itemStack;
 
+	}
+	
+	public ItemStack toEnchantedBook() {
+		if(this.material.equals(Material.ENCHANTED_BOOK)) {
+			EnchantmentStorageMeta meta = (EnchantmentStorageMeta) this.itemMeta;
+			this.enchantments.forEach((k, v) -> meta.addEnchant(k, v, true));
+			this.itemStack.setItemMeta(meta);
+		}
+		
+		return this.itemStack;
 	}
 
 	public static ItemBuilder toItemBuilder(ItemStack itemStack) {

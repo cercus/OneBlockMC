@@ -22,8 +22,8 @@ import fr.cercusmc.oneblockmc.Main;
 import fr.cercusmc.oneblockmc.utils.Constantes;
 import fr.cercusmc.oneblockmc.utils.FileCustom;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
-import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
 import fr.cercusmc.oneblockmc.utils.Position;
+import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
 
 public class ToolsIsland {
 

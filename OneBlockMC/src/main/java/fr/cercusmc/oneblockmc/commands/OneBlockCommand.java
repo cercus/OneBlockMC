@@ -22,15 +22,16 @@ import fr.cercusmc.oneblockmc.commands.players.HomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.InfosCommand;
 import fr.cercusmc.oneblockmc.commands.players.KickCommand;
 import fr.cercusmc.oneblockmc.commands.players.LevelCommand;
+import fr.cercusmc.oneblockmc.commands.players.PhaseCommand;
 import fr.cercusmc.oneblockmc.commands.players.SetHomeCommand;
 import fr.cercusmc.oneblockmc.commands.players.UnbanCommand;
 import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
 import fr.cercusmc.oneblockmc.utils.Constantes;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
-import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
 import fr.cercusmc.oneblockmc.utils.Position;
 import fr.cercusmc.oneblockmc.utils.SubCommand;
+import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
 
 public class OneBlockCommand implements CommandExecutor, TabCompleter {
 
@@ -42,7 +43,7 @@ public class OneBlockCommand implements CommandExecutor, TabCompleter {
 		this.subCommandsAdmin = new ArrayList<>();
 
 		addAll(new DeleteCommand(), new LevelCommand(), new HomeCommand(), new SetHomeCommand(), new DelHomeCommand(),
-				new BiomeCommand(), new InfosCommand(), new KickCommand(), new BanCommand(), new UnbanCommand());
+				new BiomeCommand(), new InfosCommand(), new KickCommand(), new BanCommand(), new UnbanCommand(), new PhaseCommand());
 
 	}
 

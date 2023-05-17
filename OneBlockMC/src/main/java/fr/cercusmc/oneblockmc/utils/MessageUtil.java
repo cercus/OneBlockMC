@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
 import net.md_5.bungee.api.ChatColor;
 
 public class MessageUtil {

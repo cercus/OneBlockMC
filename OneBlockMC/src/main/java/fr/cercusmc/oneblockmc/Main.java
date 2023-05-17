@@ -1,6 +1,7 @@
 package fr.cercusmc.oneblockmc;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,6 +11,7 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.cercusmc.oneblockmc.commands.OneBlockCommand;
+import fr.cercusmc.oneblockmc.events.BreakBlockEvent;
 import fr.cercusmc.oneblockmc.events.JoinEvent;
 import fr.cercusmc.oneblockmc.events.MoveEvent;
 import fr.cercusmc.oneblockmc.events.TeleportEvent;
@@ -17,6 +19,8 @@ import fr.cercusmc.oneblockmc.generators.VoidGenerator;
 import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.IslandConfig;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
+import fr.cercusmc.oneblockmc.phases.Phase;
+import fr.cercusmc.oneblockmc.phases.ToolsPhase;
 import fr.cercusmc.oneblockmc.utils.FileCustom;
 import fr.cercusmc.oneblockmc.utils.menus.MenuManager;
 
@@ -32,6 +36,8 @@ public class Main extends JavaPlugin {
 	
 	private ChunkGenerator chunkGenerator;
 	
+	private static List<Phase> phases;
+	
 	
 	private static World overworld;
 	
@@ -45,6 +51,7 @@ public class Main extends JavaPlugin {
 	
 	public static void setIslands() {
 		islands = ToolsIsland.getAllIslands();
+		phases = ToolsPhase.getAllPhases();
 	}
 	
 	@Override
@@ -78,6 +85,7 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new JoinEvent(), instance);
 		getServer().getPluginManager().registerEvents(new MoveEvent(), instance);
 		getServer().getPluginManager().registerEvents(new TeleportEvent(), instance);
+		getServer().getPluginManager().registerEvents(new BreakBlockEvent(), instance);
 		
 	}
 
@@ -87,6 +95,7 @@ public class Main extends JavaPlugin {
 		files.put("levels", new FileCustom(instance, "levels.yml"));
 		files.put("deletePlayerWaiting", new FileCustom(instance, "deletePlayerWaiting.yml"));
 		files.put("biomes", new FileCustom(instance, "biomes.yml"));
+		files.put("phases", new FileCustom(instance, "phases.yml"));
 		
 	}
 
@@ -114,6 +123,10 @@ public class Main extends JavaPlugin {
 
 	public static Map<String, FileCustom> getFiles() {
 		return files;
+	}
+	
+	public static List<Phase> getPhases() {
+		return phases;
 	}
 
 	

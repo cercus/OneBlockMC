@@ -15,8 +15,8 @@ import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
 import fr.cercusmc.oneblockmc.utils.Constantes;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
-import fr.cercusmc.oneblockmc.utils.PlaceHolderType;
 import fr.cercusmc.oneblockmc.utils.SubCommand;
+import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
 
 public class InfosCommand implements SubCommand {
 
