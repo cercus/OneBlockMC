@@ -1,8 +1,10 @@
 package fr.cercusmc.oneblockmc.events;
 
+import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.Optional;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -42,12 +44,13 @@ public class BreakBlockEvent implements Listener {
 		ToolsIsland.updateIslandVariable(is);
 		
 		Optional<Phase> currentPhase = ToolsPhase.getPhase(is.getIslandStats().getPhase());
-		
-		if(currentPhase.isEmpty()) return;
+		Optional<Phase> nextPhase = ToolsPhase.getPhase(is.getIslandStats().getPhase()+1);
+		if(currentPhase.isEmpty() || nextPhase.isEmpty()) return;
 		
 		new RandomChoice(e.getBlock().getLocation(), e.getPlayer(), is.getIslandStats().getPhase());
-		
-		if(is.getIslandStats().getNbBlock() == currentPhase.get().blockToReach()) {
+		Optional<Phase> phaseMax = Main.getPhases().stream().max(Comparator.comparingInt(Phase::id));
+		if(!phaseMax.isPresent()) return;
+		if(is.getIslandStats().getNbBlock() == nextPhase.get().blockToReach()) {
 			IslandStats stat = is.getIslandStats();
 			stat.setPhase(is.getIslandStats().getPhase()+1);
 			is.setIslandStats(stat);

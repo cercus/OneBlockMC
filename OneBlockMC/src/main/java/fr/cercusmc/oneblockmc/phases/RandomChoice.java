@@ -12,6 +12,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -55,22 +56,38 @@ public class RandomChoice {
 		final int probabilityGenerateChest = Main.getIslandConfig().getProbabilityGenerateChest();
 		probas.put("chest", probabilityGenerateChest);
 
-		int r = this.random.nextInt(probas.values().stream().mapToInt(Integer::intValue).sum());
+		int sum = probas.values().stream().mapToInt(Integer::intValue).sum();
+		int r = this.random.nextInt(sum);
 
 		Map<String, Integer> sorted = MathUtil.sortByValue(probas);
 
 		LinkedList<String> keys = new LinkedList<>(sorted.keySet());
+				
 		if (r < sorted.get(keys.get(0))) {
-			this.type = GenerateType.valueOf(keys.get(0).toUpperCase());
-			randomBlock();
+			generate(keys.get(0));
 		} else if (r < sorted.get(keys.get(0)) + sorted.get(keys.get(1))) {
-			this.type = GenerateType.valueOf(keys.get(1).toUpperCase());
+			generate(keys.get(1));
+		} else if(r <= sum){
+			generate(keys.get(2));
+		}
+		
+		
+
+	}
+	
+	private void generate(String key) {
+		
+		if(key.equals("block")) {
+			this.type = GenerateType.BLOCK;
+			randomBlock();
+		} else if(key.equals("entity")) {
+			this.type = GenerateType.ENTITY;
 			randomEntity();
-		} else {
-			this.type = GenerateType.valueOf(keys.get(2).toUpperCase());
+		} else if(key.equals("chest")) {
+			this.type = GenerateType.CHEST;
 			randomChest();
 		}
-
+		
 	}
 
 	private void randomChest() {
