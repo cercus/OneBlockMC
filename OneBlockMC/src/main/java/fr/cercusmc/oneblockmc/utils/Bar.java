@@ -1,5 +1,8 @@
 package fr.cercusmc.oneblockmc.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
@@ -16,6 +19,7 @@ public class Bar {
 	private String text;
 	private BarFlag[] flags;
 	private boolean isVisible;
+	private List<Player> players;
 	
 	public Bar(BarColor color, BarStyle style, double progress, String text, boolean isVisible, BarFlag... flags) {
 		this.bossbar = Bukkit.createBossBar(text, color, style, flags);
@@ -25,6 +29,7 @@ public class Bar {
 		this.style = style;
 		this.progress = progress;
 		this.text = text;
+		this.players = new ArrayList<>();
 	}
 	
 	public Bar(BarColor color, BarStyle style, String text) {
@@ -37,11 +42,13 @@ public class Bar {
 	
 	public Bar addPlayer(Player p) {
 		this.bossbar.addPlayer(p);
+		this.players.add(p);
 		return this;
 	}
 	
 	public Bar removePlayer(Player p) {
 		this.bossbar.removePlayer(p);
+		this.players.remove(p);
 		return this;
 	}
 	
@@ -112,6 +119,10 @@ public class Bar {
 	
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
+	}
+	
+	public List<Player> getPlayers() {
+		return this.players;
 	}
 
 }

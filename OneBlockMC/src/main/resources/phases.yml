@@ -75,7 +75,7 @@
 2:
   icon: "DEEPSLATE"
   name: "§8Souterrain"
-  blocs_to_reach: 50
+  blocs_to_reach: 150
   description:
     - ""
     - "§8Beaucoup de blocs, items et"
@@ -129,7 +129,7 @@
 3:
   icon: "SNOW_BLOCK"
   name: "Neige"
-  blocs_to_reach: 100
+  blocs_to_reach: 400
   description:
     - ""
     - "Brr ! Qu'il fait froid..."
@@ -163,7 +163,7 @@
 4:
   icon: "PRISMARINE"
   name: "§bOcéan"
-  blocs_to_reach: 150
+  blocs_to_reach: 600
   description:
     - ""
     - "Un monde aquatique sur votre île"
@@ -226,7 +226,7 @@
     - "Explorer les blocs/mobs de la jungle profonde, comme un aventurier"
     - ""
     - "&aNombre de blocs à atteindre : %nb%"
-  blocs_to_reach: 200
+  blocs_to_reach: 850
   blocs:
     - "COBBLESTONE 40"
     - "JUNGLE_LOG 40"
@@ -262,7 +262,7 @@
     - "J'espère que vous n'avez aps oublier de vous hydrater..."
     - ""
     - "&aNombre de blocs à atteindre : %nb%"
-  blocs_to_reach: 300
+  blocs_to_reach: 1000
   blocs:
     - "ACACIA_LOG 28"
     - "BROWN_TERRACOTTA 14"
@@ -302,7 +302,7 @@
     - "Bienvenue en Enfer !"
     - ""
     - "&aNombre de blocs à atteindre : %nb%"
-  blocs_to_reach: 350
+  blocs_to_reach: 1400
   blocs:
     - "ANCIENT_DEBRIS 3"
     - "BASALT 10"
@@ -359,7 +359,7 @@
     - "Un petit coin de paradis ?"
     - ""
     - "&aNombre de blocs à atteindre : %nb%"
-  blocs_to_reach: 400
+  blocs_to_reach: 2000
   blocs:
     - "BEE_NEST 5"
     - "BEEHIVE 7"
@@ -400,7 +400,7 @@
     - "Envie de faire du commerce ?"
     - ""
     - "&aNombre de blocs à atteindre : %nb%"
-  blocs_to_reach: 450
+  blocs_to_reach: 3000
   blocs:
     - "GRASS_BLOCK 50"
     - "OAK_LOG 40"
@@ -452,7 +452,7 @@
     - "Un monde dévasté par quoi ?"
     - ""
     - "&aNombre de blocs à atteindre : %nb%"
-  blocs_to_reach: 500
+  blocs_to_reach: 4500
   blocs:
     - "BONE_BLOCK 20"
     - "CHIDELED_STONE_BRICKS 25"
@@ -489,7 +489,7 @@
     - "§c§lEs-ce vraiment la fin ?"
     - ""
     - "&aNombre de blocs à atteindre : %nb%"
-  blocs_to_reach: 550
+  blocs_to_reach: 6500
   blocs:
     - "END_STONE 25"
     - "END_STONE_BRICKS 25"

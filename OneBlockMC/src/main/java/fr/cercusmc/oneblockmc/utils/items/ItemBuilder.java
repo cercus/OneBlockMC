@@ -1,4 +1,4 @@
-package fr.cercusmc.oneblockmc.utils;
+package fr.cercusmc.oneblockmc.utils.items;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,0 +1,35 @@
+upgrade:
+   island_size:
+      1:
+         position: 10
+         size: 50
+         icon: "COAL"
+         name: "§eIle niveau 1"
+         description:
+            - "§eAugmenter le rayon de l'île : §a%currentRadiusMax% §e>> §a%nextRadius%"
+            - "§ePrix :"
+            - "§eMoney : §a%moneyRequired%"
+            - "§eExperience : §a%expRequired%"
+            - "§eLevel d'xp : §a%levelXpRequired%"
+            - "§eNiveau de l'île : §a%islandLevelRequired%"
+         price:
+            money: 2000
+            exp: 0
+            level_xp: 0
+            island_level: 20
+      2:
+         position: 11
+         size: 75
+         price:
+            money: 10000
+            exp: 400
+            level_xp: 0
+            island_level: 40
+      3:
+          position: 12
+          size: 100
+          price:
+             money: 0
+             exp: 0
+             level_xp: 10
+             island_level: 100      

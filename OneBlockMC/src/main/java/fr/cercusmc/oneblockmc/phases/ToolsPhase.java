@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
 
 import fr.cercusmc.oneblockmc.Main;
 import fr.cercusmc.oneblockmc.utils.Constantes;
-import fr.cercusmc.oneblockmc.utils.FileCustom;
+import fr.cercusmc.oneblockmc.utils.files.FileCustom;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
 import fr.cercusmc.oneblockmc.utils.ValidateUtil;
 import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
@@ -112,10 +112,7 @@ public class ToolsPhase {
 	 * Exemple : liste = ["arbre", "branche", "feuille", "racine", "sève", "écorce"]
 	 * proba = [16.6, 13.6, 16.6, 16.6, 19.6, 16.6] ==> Le mot "arbre" doit sortir
 	 * dans 16,6% des cas
-	 * 
-	 * @param <T>
-	 * @param items         Liste d'item
-	 * @param probabilities Liste de probabilité
+	 *
 	 */
 	public static <T> T selectionAleatoirePondere(Map<T, Integer> map) {
 		LinkedHashMap<T, Double> cumulativeProbabilities = new LinkedHashMap<>(map.size());

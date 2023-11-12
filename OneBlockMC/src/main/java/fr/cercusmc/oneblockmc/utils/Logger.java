@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 
 public class Logger {
 	
-private String prefix;
+	private String prefix;
 	
 	private String message;
 	

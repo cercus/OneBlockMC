@@ -12,9 +12,9 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.enchantments.Enchantment;
@@ -25,9 +25,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import fr.cercusmc.oneblockmc.Main;
-import fr.cercusmc.oneblockmc.utils.ItemBuilder;
+import fr.cercusmc.oneblockmc.utils.items.ItemBuilder;
 import fr.cercusmc.oneblockmc.utils.MathUtil;
 import fr.cercusmc.oneblockmc.utils.Position;
+import fr.cercusmc.oneblockmc.utils.ValidateUtil;
 
 public class RandomChoice {
 
@@ -125,6 +126,14 @@ public class RandomChoice {
 			inv.setItem(slotChosen, itemChosen);
 			slotsChestString.remove(slotChosen+"");
 		}
+		
+		String shape = Main.getInstance().getConfig().getString("config.random_block.particle_chest.shape", "SPHERE");
+		String particleStr = Main.getInstance().getConfig().getString("config.random_block.particle_chest.particle");
+		Particle particle = ValidateUtil.checkEnum(Particle.class, particleStr) ? Particle.valueOf(particleStr) : Particle.ASH;
+		if(shape.equalsIgnoreCase("SPHERE")) {
+			MathUtil.drawSphere(Main.getInstance().getConfig().getInt("config.random_block.particle_chest.radius"), this.loc, particle);
+		}
+		
 	}
 
 	private Entity randomEntity() {

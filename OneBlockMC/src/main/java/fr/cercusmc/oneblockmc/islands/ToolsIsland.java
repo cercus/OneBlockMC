@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -16,11 +18,17 @@ import org.bukkit.World.Environment;
 import org.bukkit.WorldCreator;
 import org.bukkit.block.Biome;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.util.BoundingBox;
 
 import fr.cercusmc.oneblockmc.Main;
+import fr.cercusmc.oneblockmc.events.JoinEvent;
+import fr.cercusmc.oneblockmc.phases.Phase;
+import fr.cercusmc.oneblockmc.phases.ToolsPhase;
+import fr.cercusmc.oneblockmc.settings.Setting;
+import fr.cercusmc.oneblockmc.settings.ToolSettings;
 import fr.cercusmc.oneblockmc.utils.Constantes;
-import fr.cercusmc.oneblockmc.utils.FileCustom;
+import fr.cercusmc.oneblockmc.utils.files.FileCustom;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
 import fr.cercusmc.oneblockmc.utils.Position;
 import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
@@ -38,6 +46,11 @@ public class ToolsIsland {
 	 */
 	public static Island createIsland(UUID uuid) {
 
+		Optional<Integer> firstPhaseOpt = ToolsPhase.getAllPhases().stream().map(Phase::id).min(Integer::compare);
+		if(firstPhaseOpt.isEmpty()) return null;
+		
+		int firstPhase = firstPhaseOpt.get();
+		
 		MessageUtil.sendMessage(Bukkit.getPlayer(uuid),
 				Main.getFiles().get(Constantes.MESSAGES).getString("island.creating_island"));
 		FileCustom c = Main.getFiles().get(Constantes.ISLANDS);
@@ -58,7 +71,7 @@ public class ToolsIsland {
 		IslandStats stat = new IslandStats();
 		stat.setLevel(0);
 		stat.setNbBlock(0);
-		stat.setPhase(1);
+		stat.setPhase(firstPhase);
 		stat.setRadiusIsland(Main.getIslandConfig().getRadiusMin());
 		newIsland.setIslandStats(stat);
 
@@ -70,15 +83,35 @@ public class ToolsIsland {
 		c.save();
 		changeBiomeOfIsland(uuid, Main.getIslandConfig().getBiomeDefault());
 		Bukkit.getPlayer(uuid).teleport(Position.getCenterOfBlock(locIsland));
-
+		
+		FileCustom settingConfig = Main.getFiles().get("settings");
+		ToolSettings.getAllSettings(settingConfig);
+		createFileSetting(Main.getInstance(), settingConfig, uuid.toString());
+		
 		EnumMap<PlaceHolderType, String> map = new EnumMap<>(PlaceHolderType.class);
 		map.put(PlaceHolderType.LOC_X, locIsland.getX() + "");
 		map.put(PlaceHolderType.LOC_Y, locIsland.getY() + "");
 		map.put(PlaceHolderType.LOC_Z, locIsland.getZ() + "");
 		MessageUtil.sendMessage(Bukkit.getPlayer(uuid),
 				Main.getFiles().get(Constantes.MESSAGES).getString("island.successfull_create_island"), map);
-
+		JoinEvent.updateBar(ToolsPhase.getPhase(firstPhase), ToolsPhase.getPhase(firstPhase+1), Bukkit.getPlayer(uuid), newIsland);
+		
 		return newIsland;
+	}
+
+	private static void createFileSetting(Plugin plugin, FileCustom settingConfig, String uuid) {
+		FileCustom settingsFile = new FileCustom(plugin, "settings-data", uuid);
+		
+		Map<String, List<Setting>> map = ToolSettings.getAllSettings(settingConfig).stream().collect(Collectors.groupingBy(Setting::getRank));
+		
+		for(Map.Entry<String, List<Setting>> entries : map.entrySet()) {
+			settingsFile.set("", entries.getKey());
+			for(Setting s : entries.getValue())
+				settingsFile.set(entries.getKey()+"."+s.getSetting(), s.isDefaultValue());
+		}
+		
+		Main.getFilesSettings().add(settingsFile);
+		
 	}
 
 	/**
@@ -216,21 +249,43 @@ public class ToolsIsland {
 		return Bukkit.getWorld(name);
 	}
 	
-	public static boolean locIsInIsland(Island is, Location loc) {
+	/**
+	 * Check if a location belongs to island with radius given
+	 * @param is
+	 * @param loc
+	 * @param radius
+	 * @return
+	 */
+	public static boolean locIsInIslandCheckByRadius(Island is, Location loc, int radius) {
 		Location locCenter = is.getLocations().getCenterIsland();
-		BoundingBox b = new BoundingBox(locCenter.getBlockX()*1f - Main.getIslandConfig().getRadiusMax(),
-				locCenter.getWorld().getMinHeight(), locCenter.getBlockZ()*1f - Main.getIslandConfig().getRadiusMax(),
-				locCenter.getBlockX()*1f + Main.getIslandConfig().getRadiusMax(), loc.getWorld().getMaxHeight(),
-				locCenter.getBlockZ()*1f + Main.getIslandConfig().getRadiusMax());
-		
-		return b.contains(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-	}
+		BoundingBox b = new BoundingBox(locCenter.getBlockX()*1f - radius,
+				locCenter.getWorld().getMinHeight(), locCenter.getBlockZ()*1f - radius,
+				locCenter.getBlockX()*1f + radius, loc.getWorld().getMaxHeight(),
+				locCenter.getBlockZ()*1f + radius);
 
+		return b.contains(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()) && loc.getWorld().getName().equals(Main.getOverworld().getName());
+	}
+	
+	/**
+	 * Check if a location is in island available build
+	 * @param is
+	 * @param loc
+	 * @return
+	 */
+	public static boolean locIsInIslandAvailableBuild(Island is, Location loc) {
+		return locIsInIslandCheckByRadius(is, loc, is.getIslandStats().getRadiusIsland());
+	}
+	
+	public static boolean locIsInIsland(Island is, Location loc) {
+		return locIsInIslandCheckByRadius(is, loc, Main.getIslandConfig().getRadiusMax());
+	}
+	
 	public static Optional<Island> getIslandByLocation(Location loc) {
-		
 		return Main.getIslands().values().stream().filter(k -> locIsInIsland(k, loc)).findFirst();
-
-
 	}
+	
+	
+	
+	
 
 }

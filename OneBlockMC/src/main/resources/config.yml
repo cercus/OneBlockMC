@@ -35,6 +35,10 @@ config:
       max_enchantment_one_enchanted_book: 3
       particle_generate_block: "CRIT"
       particle_generate_entity: "FIREWORKS_SPARK"
+      particle_chest:
+         shape: "SPHERE"
+         radius: 3
+         particle: "FIREWORKS_SPARK"
       sound_generate_entity: "BLOCK_ANVIL_FALL"
       
       

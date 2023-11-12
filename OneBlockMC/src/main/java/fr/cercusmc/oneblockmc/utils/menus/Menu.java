@@ -3,6 +3,8 @@ package fr.cercusmc.oneblockmc.utils.menus;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -130,7 +132,7 @@ public abstract class Menu implements InventoryHolder {
     /**
      * @param material    The material to base the ItemStack on
      * @param displayName The display name of the ItemStack
-     * @param lore        The lore of the ItemStack, with the Strings being automatically color coded with ColorTranslator
+     * @param lores        The lore of the ItemStack, with the Strings being automatically color coded with ColorTranslator
      * @return The constructed ItemStack object
      */
     public ItemStack makeItem(Material material, String displayName, List<String> lores) {
@@ -145,6 +147,23 @@ public abstract class Menu implements InventoryHolder {
         item.setItemMeta(itemMeta);
 
         return item;
+    }
+    
+    public void setMenuBorder(@Nullable ItemStack it) {
+    	ItemStack fill;
+    	if(null == it)
+    		fill = fillerGlass;
+    	else
+    		fill = it;
+    	
+    	for(int i = 0; i < getSlots(); i++) {
+    		if((i >= 0 && i < 9) || i%9 == 0 || i%9 == 8 || i >= getSlots()-9 ) {
+    			inventory.setItem(i, fill);
+    		}
+    	}
+    	
+    	
+    	
     }
 
 }

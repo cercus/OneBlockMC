@@ -18,11 +18,28 @@ public class MoveEvent implements Listener {
 	@EventHandler
 	public void onMove(PlayerMoveEvent e) {
 		Location locTo = e.getTo();
-		Optional<Island> is = ToolsIsland.getIslandByLocation(locTo);
-		if(is.isPresent() && is.get().playerIsBanned(e.getPlayer().getUniqueId().toString())) {
+		Optional<Island> isFrom = ToolsIsland.getIslandByLocation(e.getFrom());
+		Optional<Island> isTo = ToolsIsland.getIslandByLocation(locTo);
+		
+		if(isFrom.isEmpty() && isTo.isEmpty()) return;
+		
+		if(isTo.isPresent() && isTo.get().playerIsBanned(e.getPlayer().getUniqueId().toString())) {
 			MessageUtil.sendMessage(e.getPlayer(), Main.getFiles().get(Constantes.MESSAGES).getString("island.player_banned"));
 			e.setCancelled(true);
+			return;
 		}
+		
+		if(isTo.isPresent() && isFrom.isPresent() && !isTo.get().getOwner().equals(isFrom.get().getOwner())) {
+			MessageUtil.sendMessage(e.getPlayer(), "Vous quittez l'île de " + isFrom.get().getOwner());
+			MessageUtil.sendMessage(e.getPlayer(), "Vous entrez sur l'île de " + isTo.get().getOwner());
+			
+		} else if(isTo.isPresent() && isFrom.isEmpty()) {
+			MessageUtil.sendMessage(e.getPlayer(), "Vous entrez sur l'île de " + isTo.get().getOwner());
+		} else if(isTo.isEmpty()) {
+			MessageUtil.sendMessage(e.getPlayer(), "Vous quittez l'île de " + isFrom.get().getOwner());
+		}
+		
+		
 	}
 
 }

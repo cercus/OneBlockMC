@@ -1,4 +1,4 @@
-package fr.cercusmc.oneblockmc.utils;
+package fr.cercusmc.oneblockmc.utils.files;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.cercusmc.oneblockmc.utils.Logger;
+import fr.cercusmc.oneblockmc.utils.ValidateUtil;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -19,22 +21,35 @@ public class FileCustom {
     private FileConfiguration fileConfiguration;
     private String fileName;
     private Logger logger = new Logger();
-
-    /**
-     * Contruct a new object FileCustom
-     * @param fileName : Name of file
-     */
-    public FileCustom(Plugin plugin, String fileName) {
-        if(fileName.contains(".yml")) {
-            file = new File(plugin.getDataFolder(), fileName);
+    
+    public FileCustom(Plugin plugin, String folder, String fileName) {
+    	
+    	String pathDataFolder = plugin.getDataFolder().getAbsolutePath();
+		
+		if(folder != null && !folder.isBlank()) {
+			if(pathDataFolder.endsWith("/")) {
+				pathDataFolder += folder;
+			} else {
+				pathDataFolder += "/"+folder;
+			}
+		}
+		
+		File fileNew = new File(pathDataFolder);
+		
+    	if(fileName.contains(".yml")) {
+    		file = new File(fileNew, fileName);
             this.fileName = fileName;
         } else {
-            file = new File(plugin.getDataFolder(), (fileName + ".yml"));
+        	file = new File(fileNew, (fileName + ".yml"));
             this.fileName = fileName +".yml";
         }
         if(!file.exists()) {
             logger.info("Creation of file " + fileName + "...");
-            plugin.saveResource(fileName, false);
+            if(folder != null && folder.isBlank()) {
+                plugin.saveResource(fileName, false);
+            } else {
+                plugin.saveResource(folder + "/" + fileName, false);
+            }
             logger.info("File created successfully");
         }
 
@@ -49,6 +64,14 @@ public class FileCustom {
         	logger.info("An error occurred while loading the file :" + this.fileName +"; " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Contruct a new object FileCustom
+     * @param fileName : Name of file
+     */
+    public FileCustom(Plugin plugin, String fileName) {
+        this(plugin, "", fileName);
     }
     
     /**
@@ -202,6 +225,10 @@ public class FileCustom {
 	
 	public boolean getBoolean(String path) {
 		return fileConfiguration.getBoolean(path);
+	}
+	
+	public String getFileName() {
+		return fileName;
 	}
 
 }

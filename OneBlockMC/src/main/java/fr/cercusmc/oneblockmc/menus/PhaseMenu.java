@@ -17,7 +17,7 @@ import fr.cercusmc.oneblockmc.islands.Island;
 import fr.cercusmc.oneblockmc.islands.ToolsIsland;
 import fr.cercusmc.oneblockmc.phases.Phase;
 import fr.cercusmc.oneblockmc.utils.Constantes;
-import fr.cercusmc.oneblockmc.utils.ItemBuilder;
+import fr.cercusmc.oneblockmc.utils.items.ItemBuilder;
 import fr.cercusmc.oneblockmc.utils.MessageUtil;
 import fr.cercusmc.oneblockmc.utils.enums.PlaceHolderType;
 import fr.cercusmc.oneblockmc.utils.exceptions.MenuException;

@@ -18,7 +18,14 @@ public enum PlaceHolderType {
 	ISLAND_OWNER("%islandOwner%"),
 	ISLAND_RADIUS("%radius%"),
 	PAGE("%page%"),
-	MAX_PAGE("%maxPage%");
+	MAX_PAGE("%maxPage%"),
+	MEMBERS("%members%"),
+	MONEY_REQUIRED("%moneyRequired%"),
+	EXP_REQUIRED("%expRequired%"),
+	LEVEL_XP_REQUIRED("%levelXpRequired%"),
+	ISLAND_LEVEL_REQUIRED("%islandLevelRequired%"),
+	CURRENT_RADIUS_MAX("%currentRadiusMax%"),
+	NEXT_RADIUS("%nextRadius%");
 	
 	
 	private String placeHolderName;

@@ -38,6 +38,19 @@ island:
    successfull_kicked: "§cLe joueur %player% a bien été kick de votre île"
    player_kicked: "§cVous avez été kick de l'île de %player%"
    successfull_phase_passed: "§eVous passez à la phase §r%nextPhase% §e!"
+   player_already_launch_invitation: "§eVous avez déjà envoyer une invitation"
+   player_already_invitation: "§eCe joueur a déjà une invitation en cours"
+   successfull_request_invitation_to_target: "§eVous avez reçu une demande d'invitation pour rejoindre l'île de §6%player%§e. Faites /ob accept ou /ob deny pour accepter ou refuser."
+   successfull_request_invitation: "§eDemande d'invitation envoyé."
+   invite_auto_deny: "§cVous ne pouvez pas vous auto-inviter"
+   no_request_invitation: "§eVous n'avez  pas d'invitation en cours."
+   quit_island_invite: "§eVeuillez quitter votre île actuel"
+   successfull_join_island: "§eVous avez rejoint avec succès l'île de %player%"
+   successfull_deny_invitation_player: "§eVous avez refuser l'invitation"
+   successfull_deny_invitation_requester: "§eCe joueur a refusé votre invitation"
+   cant_leave_island_if_owner: "§cVous ne pouvez pas quitter votre île. Merci de faire /ob delete pour supprimer votre île"
+   successfull_leave_island: "§eVous avez bien quitté votre île actuelle"
+   
    infos:
       - "§6===== §eInformations de l'île §6====="
       - "§eNom de l'île : §6%islandName%"
@@ -47,6 +60,7 @@ island:
       - "§eNombre de blocs miné(s) : §6%nb%"
       - "§eRayon de l'île : §6%radius%"
       - "§eBiome de l'île : §6%biomeName%"
+      - "§eMembre(s) de l'île : §6%members%"
 commands:
    too_many_arg: "§cTrop ou pas assez d'argument. §6Syntaxe : %syntax%" 
    delete:
@@ -79,4 +93,25 @@ commands:
    kick:
       syntax: "§e/ob kick <player>"
       description: "§eKick un joueur"
+   invite:
+      syntax: "§e/ob invite <player>"
+      description: "§eInviter un joueur"
+   accept:
+      syntax: "§e/ob accept"
+      description: "§eAccepter une invitation"
+   deny:
+      syntax: "§e/ob deny"
+      description: "§eRefuser une invitation"
+   leave:
+      syntax: "§e/ob leave"
+      description: "§eQuitter une île"
+   help:
+      syntax: "§e/ob help"
+      description: "§eAfficher les différentes commandes possibles"
+   upgrade:
+      syntax: "§e/ob upgrade"
+      description: "§eAfficher les différentes améliorations possibles"
+   settings:
+      syntax: "§e/ob settings"
+      description: "§eAfficher les paramètres d'île"
         

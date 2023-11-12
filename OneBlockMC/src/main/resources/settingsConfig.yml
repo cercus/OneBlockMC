@@ -1,0 +1,693 @@
+settings:
+   visitor:
+      DESTROY:
+        icon: "DIAMOND_PICKAXE"
+        name: "§aLes visiteurs peuvent casser des blocs"
+        default: false
+      PLACE:
+        icon: "SPRUCE_PLANKS"
+        name: "§aLes visiteurs peuvent placer des blocs"
+        default: false
+      ANVIL:
+        icon: "ANVIL"
+        name: "§aLes visiteurs peuvent utiliser les enclumes"
+        default: false
+      ARMOR_STAND_USE:
+        icon: "ARMOR_STAND"
+        name: "§aLes visiteurs peuvent utiliser les armor-stands"
+        default: false
+      BEACON:
+        icon: "BEACON"
+        name: "§aLes visiteurs peuvent intéragir avec un beacon"
+        default: false
+      BED:
+        icon: "BLACK_BED"
+        name: "§aLes visiteurs peuvent utiliser un lit"
+        default: false
+      ANIMAL_BREEDING:
+        icon: "WHEAT"
+        name: "§aLes visiteurs peuvent reproduire les animaux"
+        default: false
+      BREWING_STAND:
+        icon: "BREWING_STAND"
+        name: "§aLes visiteurs peuvent utiliser les stands d'alchimie"
+        default: false
+      BUCKET:
+        icon: "BUCKET"
+        name: "§aLes visiteurs peuvent utiliser les seaux"
+        default: false
+      STORAGE:
+        icon: "CHEST"
+        name: "§aLes visiteurs peuvent ouvrir les coffres"
+        default: false
+      CRAFTING_TABLE:
+        icon: "CRAFTING_TABLE"
+        name: "§aLes visiteurs peuvent utiliser les tables de craft"
+        default: false
+      CROP:
+        icon: "BEETROOT_SEEDS"
+        name: "§aLes visiteurs peuvent casser les cultures"
+        default: false
+      DOOR:
+        icon: "OAK_DOOR"
+        name: "§aLes visiteurs peuvent fermer/ouvrir les portes"
+        default: false
+      FENCE_GATE:
+        icon: "OAK_FENCE_GATE"
+        name: "§aLes visiteurs peuvent fermer/ouvrir les portillons"
+        default: false
+      PROJECTILE:
+        icon: "ARROW"
+        name: "§aLes visiteurs peuvent utiliser les projectiles"
+        default: false
+      ENCHANTING_TABLE:
+        icon: "ENCHANTING_TABLE"
+        name: "§aLes visiteurs peuvent utiliser la table d'enchantement"
+        default: false
+      FLINT_AND_STEEL:
+        icon: "FLINT_AND_STEEL"
+        name: "§aLes visiteurs peuvent utiliser un briquet"
+        default: false
+      FURNACE:
+        icon: "FURNACE"
+        name: "§aLes visiteurs peuvent utiliser un four"
+        default: false
+      HORSE_INVENTORY:
+        icon: "HORSE_SPAWN_EGG"
+        name: "§aLes visiteurs peuvent intéragir avec les chevaux"
+        default: false
+      MOB_RIDING:
+        icon: "SADDLE"
+        name: "§aLes visiteurs peuvent monter sur des animaux"
+        default: false
+      MONSTER_HURTING:
+        icon: "CREEPER_HEAD"
+        name: "§aLes visiteurs peuvent frapper les mobs agressifs"
+        default: true
+      MOB_HURTING:
+        icon: "WOODEN_SWORD"
+        name: "§aLes visiteurs peuvent frapper les mobs passifs"
+        default: false
+      MOB_TAMING:
+        icon: "CARROT"
+        name: "§aLes visiteurs peuvent apprivoisé les animaux"
+        default: false
+      LEASH:
+        icon: "LEAD"
+        name: "§aLes visiteurs peuvent utiliser les laisses"
+        default: false
+      LEVER_BUTTON:
+        icon: "ACACIA_BUTTON"
+        name: "§aLes visiteurs peuvent utiliser les boutons/leviers"
+        default: false
+      SHULKER_BOX:
+        icon: "WHITE_SHULKER_BOX"
+        name: "§aLes visiteurs peuvent utiliser les shulker box"
+        default: false
+      MILKING:
+        icon: "MILK_BUCKET"
+        name: "§aLes visiteurs peuvent extraire le lait des vaches"
+        default: false
+      JUKEBOX:
+        icon: "JUKEBOX"
+        name: "§aLes visiteurs peuvent utiliser les jukebox"
+        default: false
+      PRESSURE_PLATE:
+        icon: "ACACIA_PRESSURE_PLATE"
+        name: "§aLes visiteurs peuvent activer les plaques de pression"
+        default: false
+      REDSTONE:
+        icon: "REDSTONE"
+        name: "§aLes visiteurs peuvent intéragir avec la redstone"
+        default: false
+      SHEARING:
+        icon: "SHEARS"
+        name: "§aLes visiteurs peuvent utiliser une cisaille"
+        default: false
+      TRADING:
+        icon: "EMERALD"
+        name: "§aLes visiteurs peuvent faire du commerce avec les villageois"
+        default: false
+      ITEM_DROP:
+        icon: "DIAMOND"
+        name: "§aLes visiteurs peuvent dropper des items au sol"
+        default: true
+      ITEM_PICKUP:
+        icon: "COAL"
+        name: "§aLes visiteurs peuvent ramasser les items au sol"
+        default: false
+      FISHING:
+        icon: "FISHING_ROD"
+        name: "§aLes visiteurs peuvent utiliser la canne à pêche"
+        default: true
+      DROPPER_DISPENSER:
+        icon: "DISPENSER"
+        name: "§aLes visiteurs peuvent utiliser les dispensers/distributeurs"
+        default: false
+      SPAWN_EGG:
+        icon: "ZOMBIE_SPAWN_EGG"
+        name: "§aLes visiteurs peuvent utiliser les oeufs de mobs"
+        default: false
+      CAKE:
+        icon: "CAKE"
+        name: "§aLes visiteurs peuvent manger des gateaux"
+        default: false
+      DRAGON_EGG_USE:
+        icon: "DRAGON_EGG"
+        name: "§aLes visiteurs peuvent intéragir avec l'oeuf de dragon"
+        default: false
+      BOAT:
+        icon: "ACACIA_BOAT"
+        name: "§aLes visiteurs peuvent monter dans un bateau"
+        default: false
+      HOPPER:
+        icon: "HOPPER"
+        name: "§aLes visiteurs peuvent intéragir avec les hoopers"
+        default: false
+      EXPERIENCE_ORB_PICKUP:
+        icon: "EXPERIENCE_BOTTLE"
+        name: "§aLes visiteurs peuvent ramasser l'xp au sol"
+        default: true
+      PVP:
+        icon: "DIAMOND_SWORD"
+        name: "§aLes visiteurs peuvent s'attaquer entre-eux"
+        default: false
+   member:
+      DESTROY:
+        icon: "DIAMOND_PICKAXE"
+        name: "§aLes membres peuvent casser des blocs"
+        default: true
+      PLACE:
+        icon: "SPRUCE_PLANKS"
+        name: "§aLes membres peuvent placer des blocs"
+        default: true
+      ANVIL:
+        icon: "ANVIL"
+        name: "§aLes membres peuvent utiliser les enclumes"
+        default: true
+      ARMOR_STAND_USE:
+        icon: "ARMOR_STAND"
+        name: "§aLes membres peuvent utiliser les armor-stands"
+        default: true
+      BEACON:
+        icon: "BEACON"
+        name: "§aLes membres peuvent intéragir avec un beacon"
+        default: true
+      BED:
+        icon: "BLACK_BED"
+        name: "§aLes membres peuvent utiliser un lit"
+        default: true
+      ANIMAL_BREEDING:
+        icon: "WHEAT"
+        name: "§aLes membres peuvent reproduire les animaux"
+        default: true
+      BREWING_STAND:
+        icon: "BREWING_STAND"
+        name: "§aLes membres peuvent utiliser les stands d'alchimie"
+        default: true
+      BUCKET:
+        icon: "BUCKET"
+        name: "§aLes membres peuvent utiliser les seaux"
+        default: true
+      STORAGE:
+        icon: "CHEST"
+        name: "§aLes membres peuvent ouvrir les coffres"
+        default: true
+      CRAFTING_TABLE:
+        icon: "CRAFTING_TABLE"
+        name: "§aLes membres peuvent utiliser les tables de craft"
+        default: true
+      CROP:
+        icon: "BEETROOT_SEEDS"
+        name: "§aLes membres peuvent casser les cultures"
+        default: true
+      DOOR:
+        icon: "OAK_DOOR"
+        name: "§aLes membres peuvent fermer/ouvrir les portes"
+        default: true
+      FENCE_GATE:
+        icon: "OAK_FENCE_GATE"
+        name: "§aLes membres peuvent fermer/ouvrir les portillons"
+        default: true
+      PROJECTILE:
+        icon: "ARROW"
+        name: "§aLes membres peuvent utiliser les projectiles"
+        default: true
+      ENCHANTING_TABLE:
+        icon: "ENCHANTING_TABLE"
+        name: "§aLes membres peuvent utiliser la table d'enchantement"
+        default: true
+      FLINT_AND_STEEL:
+        icon: "FLINT_AND_STEEL"
+        name: "§aLes membres peuvent utiliser un briquet"
+        default: true
+      FURNACE:
+        icon: "FURNACE"
+        name: "§aLes membres peuvent utiliser un four"
+        default: true
+      HORSE_INVENTORY:
+        icon: "HORSE_SPAWN_EGG"
+        name: "§aLes membres peuvent intéragir avec les chevaux"
+        default: true
+      MOB_RIDING:
+        icon: "SADDLE"
+        name: "§aLes membres peuvent monter sur des animaux"
+        default: true
+      MONSTER_HURTING:
+        icon: "CREEPER_HEAD"
+        name: "§aLes membres peuvent frapper les mobs agressifs"
+        default: true
+      MOB_HURTING:
+        icon: "WOODEN_SWORD"
+        name: "§aLes membres peuvent frapper les mobs passifs"
+        default: true
+      MOB_TAMING:
+        icon: "CARROT"
+        name: "§aLes membres peuvent apprivoisé les animaux"
+        default: true
+      LEASH:
+        icon: "LEAD"
+        name: "§aLes membres peuvent utiliser les laisses"
+        default: true
+      LEVER_BUTTON:
+        icon: "ACACIA_BUTTON"
+        name: "§aLes membres peuvent utiliser les boutons/leviers"
+        default: true
+      SHULKER_BOX:
+        icon: "WHITE_SHULKER_BOX"
+        name: "§aLes membres peuvent utiliser les shulker box"
+        default: true
+      MILKING:
+        icon: "MILK_BUCKET"
+        name: "§aLes membres peuvent extraire le lait des vaches"
+        default: true
+      JUKEBOX:
+        icon: "JUKEBOX"
+        name: "§aLes membres peuvent utiliser les jukebox"
+        default: true
+      PRESSURE_PLATE:
+        icon: "ACACIA_PRESSURE_PLATE"
+        name: "§aLes membres peuvent activer les plaques de pression"
+        default: true
+      REDSTONE:
+        icon: "REDSTONE"
+        name: "§aLes membres peuvent intéragir avec la redstone"
+        default: true
+      SHEARING:
+        icon: "SHEARS"
+        name: "§aLes membres peuvent utiliser une cisaille"
+        default: true
+      TRADING:
+        icon: "EMERALD"
+        name: "§aLes membres peuvent faire du commerce avec les villageois"
+        default: true
+      ITEM_DROP:
+        icon: "DIAMOND"
+        name: "§aLes membres peuvent dropper des items au sol"
+        default: true
+      ITEM_PICKUP:
+        icon: "COAL"
+        name: "§aLes membres peuvent ramasser les items au sol"
+        default: true
+      FISHING:
+        icon: "FISHING_ROD"
+        name: "§aLes membres peuvent utiliser la canne à pêche"
+        default: true
+      DROPPER_DISPENSER:
+        icon: "DISPENSER"
+        name: "§aLes membres peuvent utiliser les dispensers/distributeurs"
+        default: true
+      SPAWN_EGG:
+        icon: "ZOMBIE_SPAWN_EGG"
+        name: "§aLes membres peuvent utiliser les oeufs de mobs"
+        default: true
+      CAKE:
+        icon: "CAKE"
+        name: "§aLes membres peuvent manger des gateaux"
+        default: true
+      DRAGON_EGG_USE:
+        icon: "DRAGON_EGG"
+        name: "§aLes membres peuvent intéragir avec l'oeuf de dragon"
+        default: true
+      BOAT:
+        icon: "ACACIA_BOAT"
+        name: "§aLes membres peuvent monter dans un bateau"
+        default: true
+      HOPPER:
+        icon: "HOPPER"
+        name: "§aLes membres peuvent intéragir avec les hoopers"
+        default: true
+      EXPERIENCE_ORB_PICKUP:
+        icon: "EXPERIENCE_BOTTLE"
+        name: "§aLes membres peuvent ramasser l'xp au sol"
+        default: true
+      PVP:
+        icon: "DIAMOND_SWORD"
+        name: "§aLes membres peuvent s'attaquer entre-eux"
+        default: true
+   owner:
+      DESTROY:
+        icon: "DIAMOND_PICKAXE"
+        name: "§aLe propriétaire peuvent casser des blocs"
+        default: true
+      PLACE:
+        icon: "SPRUCE_PLANKS"
+        name: "§aLe propriétaire peuvent placer des blocs"
+        default: true
+      ANVIL:
+        icon: "ANVIL"
+        name: "§aLe propriétaire peuvent utiliser les enclumes"
+        default: true
+      ARMOR_STAND_USE:
+        icon: "ARMOR_STAND"
+        name: "§aLe propriétaire peuvent utiliser les armor-stands"
+        default: true
+      BEACON:
+        icon: "BEACON"
+        name: "§aLe propriétaire peuvent intéragir avec un beacon"
+        default: true
+      BED:
+        icon: "BLACK_BED"
+        name: "§aLe propriétaire peuvent utiliser un lit"
+        default: true
+      ANIMAL_BREEDING:
+        icon: "WHEAT"
+        name: "§aLe propriétaire peuvent reproduire les animaux"
+        default: true
+      BREWING_STAND:
+        icon: "BREWING_STAND"
+        name: "§aLe propriétaire peuvent utiliser les stands d'alchimie"
+        default: true
+      BUCKET:
+        icon: "BUCKET"
+        name: "§aLe propriétaire peuvent utiliser les seaux"
+        default: true
+      STORAGE:
+        icon: "CHEST"
+        name: "§aLe propriétaire peuvent ouvrir les coffres"
+        default: true
+      CRAFTING_TABLE:
+        icon: "CRAFTING_TABLE"
+        name: "§aLe propriétaire peuvent utiliser les tables de craft"
+        default: true
+      CROP:
+        icon: "BEETROOT_SEEDS"
+        name: "§aLe propriétaire peuvent casser les cultures"
+        default: true
+      DOOR:
+        icon: "OAK_DOOR"
+        name: "§aLe propriétaire peuvent fermer/ouvrir les portes"
+        default: true
+      FENCE_GATE:
+        icon: "OAK_FENCE_GATE"
+        name: "§aLe propriétaire peuvent fermer/ouvrir les portillons"
+        default: true
+      PROJECTILE:
+        icon: "ARROW"
+        name: "§aLe propriétaire peuvent utiliser les projectiles"
+        default: true
+      ENCHANTING_TABLE:
+        icon: "ENCHANTING_TABLE"
+        name: "§aLe propriétaire peuvent utiliser la table d'enchantement"
+        default: true
+      FLINT_AND_STEEL:
+        icon: "FLINT_AND_STEEL"
+        name: "§aLe propriétaire peuvent utiliser un briquet"
+        default: true
+      FURNACE:
+        icon: "FURNACE"
+        name: "§aLe propriétaire peuvent utiliser un four"
+        default: true
+      HORSE_INVENTORY:
+        icon: "HORSE_SPAWN_EGG"
+        name: "§aLe propriétaire peuvent intéragir avec les chevaux"
+        default: true
+      MOB_RIDING:
+        icon: "SADDLE"
+        name: "§aLe propriétaire peuvent monter sur des animaux"
+        default: true
+      MONSTER_HURTING:
+        icon: "CREEPER_HEAD"
+        name: "§aLe propriétaire peuvent frapper les mobs agressifs"
+        default: true
+      MOB_HURTING:
+        icon: "WOODEN_SWORD"
+        name: "§aLe propriétaire peuvent frapper les mobs passifs"
+        default: true
+      MOB_TAMING:
+        icon: "CARROT"
+        name: "§aLe propriétaire peuvent apprivoisé les animaux"
+        default: true
+      LEASH:
+        icon: "LEAD"
+        name: "§aLe propriétaire peuvent utiliser les laisses"
+        default: true
+      LEVER_BUTTON:
+        icon: "ACACIA_BUTTON"
+        name: "§aLe propriétaire peuvent utiliser les boutons/leviers"
+        default: true
+      SHULKER_BOX:
+        icon: "WHITE_SHULKER_BOX"
+        name: "§aLe propriétaire peuvent utiliser les shulker box"
+        default: true
+      MILKING:
+        icon: "MILK_BUCKET"
+        name: "§aLe propriétaire peuvent extraire le lait des vaches"
+        default: true
+      JUKEBOX:
+        icon: "JUKEBOX"
+        name: "§aLe propriétaire peuvent utiliser les jukebox"
+        default: true
+      PRESSURE_PLATE:
+        icon: "ACACIA_PRESSURE_PLATE"
+        name: "§aLe propriétaire peuvent activer les plaques de pression"
+        default: true
+      REDSTONE:
+        icon: "REDSTONE"
+        name: "§aLe propriétaire peuvent intéragir avec la redstone"
+        default: true
+      SHEARING:
+        icon: "SHEARS"
+        name: "§aLe propriétaire peuvent utiliser une cisaille"
+        default: true
+      TRADING:
+        icon: "EMERALD"
+        name: "§aLe propriétaire peuvent faire du commerce avec les villageois"
+        default: true
+      ITEM_DROP:
+        icon: "DIAMOND"
+        name: "§aLe propriétaire peuvent dropper des items au sol"
+        default: true
+      ITEM_PICKUP:
+        icon: "COAL"
+        name: "§aLe propriétaire peuvent ramasser les items au sol"
+        default: true
+      FISHING:
+        icon: "FISHING_ROD"
+        name: "§aLe propriétaire peuvent utiliser la canne à pêche"
+        default: true
+      DROPPER_DISPENSER:
+        icon: "DISPENSER"
+        name: "§aLe propriétaire peuvent utiliser les dispensers/distributeurs"
+        default: true
+      SPAWN_EGG:
+        icon: "ZOMBIE_SPAWN_EGG"
+        name: "§aLe propriétaire peuvent utiliser les oeufs de mobs"
+        default: true
+      CAKE:
+        icon: "CAKE"
+        name: "§aLe propriétaire peuvent manger des gateaux"
+        default: true
+      DRAGON_EGG_USE:
+        icon: "DRAGON_EGG"
+        name: "§aLe propriétaire peuvent intéragir avec l'oeuf de dragon"
+        default: true
+      BOAT:
+        icon: "ACACIA_BOAT"
+        name: "§aLe propriétaire peuvent monter dans un bateau"
+        default: true
+      HOPPER:
+        icon: "HOPPER"
+        name: "§aLe propriétaire peuvent intéragir avec les hoopers"
+        default: true
+      EXPERIENCE_ORB_PICKUP:
+        icon: "EXPERIENCE_BOTTLE"
+        name: "§aLe propriétaire peuvent ramasser l'xp au sol"
+        default: true
+      PVP:
+        icon: "DIAMOND_SWORD"
+        name: "§aLe propriétaire peuvent s'attaquer entre-eux"
+        default: true
+   coop:
+      DESTROY:
+        icon: "DIAMOND_PICKAXE"
+        name: "§aLes joueurs coop peuvent casser des blocs"
+        default: true
+      PLACE:
+        icon: "SPRUCE_PLANKS"
+        name: "§aLes joueurs coop peuvent placer des blocs"
+        default: true
+      ANVIL:
+        icon: "ANVIL"
+        name: "§aLes joueurs coop peuvent utiliser les enclumes"
+        default: false
+      ARMOR_STAND_USE:
+        icon: "ARMOR_STAND"
+        name: "§aLes joueurs coop peuvent utiliser les armor-stands"
+        default: false
+      BEACON:
+        icon: "BEACON"
+        name: "§aLes joueurs coop peuvent intéragir avec un beacon"
+        default: false
+      BED:
+        icon: "BLACK_BED"
+        name: "§aLes joueurs coop peuvent utiliser un lit"
+        default: false
+      ANIMAL_BREEDING:
+        icon: "WHEAT"
+        name: "§aLes joueurs coop peuvent reproduire les animaux"
+        default: false
+      BREWING_STAND:
+        icon: "BREWING_STAND"
+        name: "§aLes joueurs coop peuvent utiliser les stands d'alchimie"
+        default: false
+      BUCKET:
+        icon: "BUCKET"
+        name: "§aLes joueurs coop peuvent utiliser les seaux"
+        default: false
+      STORAGE:
+        icon: "CHEST"
+        name: "§aLes joueurs coop peuvent ouvrir les coffres"
+        default: false
+      CRAFTING_TABLE:
+        icon: "CRAFTING_TABLE"
+        name: "§aLes joueurs coop peuvent utiliser les tables de craft"
+        default: false
+      CROP:
+        icon: "BEETROOT_SEEDS"
+        name: "§aLes joueurs coop peuvent casser les cultures"
+        default: false
+      DOOR:
+        icon: "OAK_DOOR"
+        name: "§aLes joueurs coop peuvent fermer/ouvrir les portes"
+        default: false
+      FENCE_GATE:
+        icon: "OAK_FENCE_GATE"
+        name: "§aLes joueurs coop peuvent fermer/ouvrir les portillons"
+        default: false
+      PROJECTILE:
+        icon: "ARROW"
+        name: "§aLes joueurs coop peuvent utiliser les projectiles"
+        default: false
+      ENCHANTING_TABLE:
+        icon: "ENCHANTING_TABLE"
+        name: "§aLes joueurs coop peuvent utiliser la table d'enchantement"
+        default: false
+      FLINT_AND_STEEL:
+        icon: "FLINT_AND_STEEL"
+        name: "§aLes joueurs coop peuvent utiliser un briquet"
+        default: false
+      FURNACE:
+        icon: "FURNACE"
+        name: "§aLes joueurs coop peuvent utiliser un four"
+        default: false
+      HORSE_INVENTORY:
+        icon: "HORSE_SPAWN_EGG"
+        name: "§aLes joueurs coop peuvent intéragir avec les chevaux"
+        default: false
+      MOB_RIDING:
+        icon: "SADDLE"
+        name: "§aLes joueurs coop peuvent monter sur des animaux"
+        default: false
+      MONSTER_HURTING:
+        icon: "CREEPER_HEAD"
+        name: "§aLes joueurs coop peuvent frapper les mobs agressifs"
+        default: true
+      MOB_HURTING:
+        icon: "WOODEN_SWORD"
+        name: "§aLes joueurs coop peuvent frapper les mobs passifs"
+        default: true
+      MOB_TAMING:
+        icon: "CARROT"
+        name: "§aLes joueurs coop peuvent apprivoisé les animaux"
+        default: true
+      LEASH:
+        icon: "LEAD"
+        name: "§aLes joueurs coop peuvent utiliser les laisses"
+        default: false
+      LEVER_BUTTON:
+        icon: "ACACIA_BUTTON"
+        name: "§aLes joueurs coop peuvent utiliser les boutons/leviers"
+        default: false
+      SHULKER_BOX:
+        icon: "WHITE_SHULKER_BOX"
+        name: "§aLes joueurs coop peuvent utiliser les shulker box"
+        default: false
+      MILKING:
+        icon: "MILK_BUCKET"
+        name: "§aLes joueurs coop peuvent extraire le lait des vaches"
+        default: false
+      JUKEBOX:
+        icon: "JUKEBOX"
+        name: "§aLes joueurs coop peuvent utiliser les jukebox"
+        default: false
+      PRESSURE_PLATE:
+        icon: "ACACIA_PRESSURE_PLATE"
+        name: "§aLes joueurs coop peuvent activer les plaques de pression"
+        default: false
+      REDSTONE:
+        icon: "REDSTONE"
+        name: "§aLes joueurs coop peuvent intéragir avec la redstone"
+        default: false
+      SHEARING:
+        icon: "SHEARS"
+        name: "§aLes joueurs coop peuvent utiliser une cisaille"
+        default: false
+      TRADING:
+        icon: "EMERALD"
+        name: "§aLes joueurs coop peuvent faire du commerce avec les villageois"
+        default: false
+      ITEM_DROP:
+        icon: "DIAMOND"
+        name: "§aLes joueurs coop peuvent dropper des items au sol"
+        default: true
+      ITEM_PICKUP:
+        icon: "COAL"
+        name: "§aLes joueurs coop peuvent ramasser les items au sol"
+        default: true
+      FISHING:
+        icon: "FISHING_ROD"
+        name: "§aLes joueurs coop peuvent utiliser la canne à pêche"
+        default: true
+      DROPPER_DISPENSER:
+        icon: "DISPENSER"
+        name: "§aLes joueurs coop peuvent utiliser les dispensers/distributeurs"
+        default: false
+      SPAWN_EGG:
+        icon: "ZOMBIE_SPAWN_EGG"
+        name: "§aLes joueurs coop peuvent utiliser les oeufs de mobs"
+        default: false
+      CAKE:
+        icon: "CAKE"
+        name: "§aLes joueurs coop peuvent manger des gateaux"
+        default: false
+      DRAGON_EGG_USE:
+        icon: "DRAGON_EGG"
+        name: "§aLes joueurs coop peuvent intéragir avec l'oeuf de dragon"
+        default: false
+      BOAT:
+        icon: "ACACIA_BOAT"
+        name: "§aLes joueurs coop peuvent monter dans un bateau"
+        default: false
+      HOPPER:
+        icon: "HOPPER"
+        name: "§aLes joueurs coop peuvent intéragir avec les hoopers"
+        default: false
+      EXPERIENCE_ORB_PICKUP:
+        icon: "EXPERIENCE_BOTTLE"
+        name: "§aLes joueurs coop peuvent ramasser l'xp au sol"
+        default: true
+      PVP:
+        icon: "DIAMOND_SWORD"
+        name: "§aLes joueurs coop peuvent s'attaquer entre-eux"
+        default: false
